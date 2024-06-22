@@ -714,7 +714,7 @@ public class GameManager : MonoBehaviour
 
     private void NextPlayer()
     {
-        currentName = (currentName == nameList.Count - 1) ? 0 : currentName++;
+        currentName = (currentName == nameList.Count - 1) ? 0 : currentName + 1;
     }
 
     private string ReplaceContent(Question q)
