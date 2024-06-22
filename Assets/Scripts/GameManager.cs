@@ -1,57 +1,57 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Debug")]
+    [SerializeField] private bool debugEnabled = true;
+    [SerializeField] private List<string> debugNames;
 
-    public Image background;
-    public Text typeText;
-    public Text contentText;
-    public Text skipText;
-    public Text nextText;
+    [Header("References")]
+    [SerializeField] private Image background;
+    [SerializeField] private Text typeText;
+    [SerializeField] private Text contentText;
+    [SerializeField] private Text skipText;
+    [SerializeField] private Text nextText;
 
-    public InputField nameInputText;
-    public Text nameListText;
-    public GameObject playButton;
+    [SerializeField] private InputField nameInputText;
+    [SerializeField] private Text nameListText;
+    [SerializeField] private GameObject playButton;
 
-    private int currentName=-1;
+    private int currentName = -1;
 
-    //Menus
-    public GameObject mainMenu;
-    public GameObject introductionMenu;
-    public GameObject game;
+    [Header("Menus")]
+    [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject introductionMenu;
+    [SerializeField] private GameObject game;
 
 
-    //Lists
+    [Header("Lists")]
     private List<string> nameList = new List<string>();
-
+    
     private List<Question> questionList = new List<Question>();
     private List<Question> eventList = new List<Question>();
     private List<Question> wyrList = new List<Question>();
     private List<Question> truthList = new List<Question>();
     private List<Question> dareList = new List<Question>();
 
+    private void DebugInitialize()
+    {
+        foreach (string s in debugNames)
+        {
+            nameList.Add(s);
+        }
+    }
+
     void Awake()
     {
 
-        //Provisional
-        //nameList.Add("Pol");
-        //nameList.Add("Mir");
-        //nameList.Add("Jaume");
-        //nameList.Add("Manel");
-        //nameList.Add("Joan");
-        //nameList.Add("Enrique");
-        //nameList.Add("Nawal");
-        //nameList.Add("Ainhoa");
-        //nameList.Add("Miri");
-        //nameList.Add("Sokaina");
-        //nameList.Add("Nohaila");
-        //nameList.Add("Laura");
-        //nameList.Add("Cristina");
-        //nameList.Add("Laia");
-
+#if UNITY_EDITOR
+        if (debugEnabled) DebugInitialize();
+#endif
         //Global events
         Question q = new Question();
         q.type = "Evento";
@@ -646,17 +646,17 @@ public class GameManager : MonoBehaviour
 #endif
 
     #region MainMenu
-    public void addPlayer()
+    public void AddPlayer()
     {
         if (nameInputText.text == "") return;
         nameListText.text = "Jugadores: ";
         nameList.Add(nameInputText.text);
 
-        for(int i=0; i<nameList.Count-1; i++)
+        for (int i = 0; i < nameList.Count - 1; i++)
         {
             nameListText.text += nameList[i] + ", ";
         }
-        nameListText.text += nameList[nameList.Count-1] + ".";
+        nameListText.text += nameList[nameList.Count - 1] + ".";
 
         nameInputText.text = "";
         if (nameList.Count >= 2) playButton.SetActive(true);
@@ -681,11 +681,11 @@ public class GameManager : MonoBehaviour
 
         Next(true);
 #if UNITY_EDITOR
-        DebugLists();
-#endif
+        if (debugEnabled) DebugLists();
+
     }
 
-    void DebugLists()
+    private void DebugLists()
     {
         Debug.Log("Name List: " + nameList.Count);
         Debug.Log("Question List: " + questionList.Count);
@@ -694,44 +694,39 @@ public class GameManager : MonoBehaviour
         Debug.Log("Truth List: " + truthList.Count);
         Debug.Log("WyR List: " + wyrList.Count);
     }
+#endif
+
     #endregion
 
     #region Game
-    Question getRandomQuestion()
+    private Question GetRandomQuestion()
     {
         return questionList[Random.Range(0, questionList.Count)];
     }
 
-    string getRandomName()
+    private string GetRandomName()
     {
         string name = nameList[Random.Range(0, nameList.Count)];
-        if (name == nameList[currentName]) return getRandomName();
+        if (name == nameList[currentName]) return GetRandomName();
 
         return name;
     }
 
-    void nextPlayer()
+    private void NextPlayer()
     {
-        if (currentName == nameList.Count - 1)
-        {
-            currentName = 0;
-        }
-        else
-        {
-            currentName++;
-        }
+        currentName = (currentName == nameList.Count - 1) ? 0 : currentName++;
     }
 
-    string ReplaceContent(Question q)
+    private string ReplaceContent(Question q)
     {
         string content;
-        if (q.content.Contains("--Name--")) content = q.content.Replace("--Name--", getRandomName());
+        if (q.content.Contains("--Name--")) content = q.content.Replace("--Name--", GetRandomName());
         else content = q.content;
 
         return content;
     }
 
-    void changeTextToColor(string hexadeximal)
+    private void ChangeTextToColor(string hexadeximal)
     {
         Color color;
         ColorUtility.TryParseHtmlString(hexadeximal, out color);
@@ -745,8 +740,8 @@ public class GameManager : MonoBehaviour
     //Buttons
     public void Next(bool skipPlayer)
     {
-        Question q = getRandomQuestion();
-        changeTextToColor("#323232"); //black
+        Question q = GetRandomQuestion();
+        ChangeTextToColor("#323232"); //black
         skipText.enabled = true;
 
         //Skip event and wyd in case they don't have balls
@@ -770,7 +765,7 @@ public class GameManager : MonoBehaviour
         }
         else if (q.type == "Reto")
         {
-            if(skipPlayer) nextPlayer();
+            if (skipPlayer) NextPlayer();
             Color red;
             ColorUtility.TryParseHtmlString("#FF2828", out red);
             background.color = red;
@@ -780,7 +775,7 @@ public class GameManager : MonoBehaviour
         }
         else if (q.type == "Verdad")
         {
-            if(skipPlayer) nextPlayer();
+            if (skipPlayer) NextPlayer();
             background.color = Color.green;
             typeText.text = q.type;
             contentText.text = nameList[currentName] + ": " + ReplaceContent(q);
@@ -795,9 +790,9 @@ public class GameManager : MonoBehaviour
         }
         else if (q.type == "BASO")
         {
-            if (skipPlayer) nextPlayer();
+            if (skipPlayer) NextPlayer();
             background.color = Color.black;
-            changeTextToColor("#FFFFFF"); //whtie
+            ChangeTextToColor("#FFFFFF"); //whtie
             typeText.text = q.type;
             contentText.text = nameList[currentName] + ": " + ReplaceContent(q);
             skipText.enabled = false;
