@@ -1746,8 +1746,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b09482f755cac14bae5427bf974bf19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugEnabled: 0
-  debugNames: []
+  debugEnabled: 1
+  debugNames:
+  - Mir
+  - Pol
+  - Manel
+  - Dani
+  - Garcia
+  - Sokaina
+  - Nohaila
+  - Laura
+  - Laia
+  - Miri
   background: {fileID: 1513036739}
   typeText: {fileID: 165075034}
   contentText: {fileID: 450064868}
