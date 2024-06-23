@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9b998eac540a942a68bbc5dfcaa811, type: 3}
   m_Name: Wyr
   m_EditorClassIdentifier: 
-  name: 
-  color: {r: 0, g: 0, b: 0, a: 0}
+  name: "\xBFQu\xE9 prefieres?"
+  color: {r: 0.92941177, g: 0.6981132, b: 0.16794232, a: 0}
   hasPrice: 0

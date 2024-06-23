@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ed8ce4e3b86a2d49872581c4a3ce40c, type: 3}
-  m_Name: BASO
+  m_Name: "Haz la mezcla definitiva! Vierte en el vaso del centro un poco de la bebida
+    de todos los jugadores hasta llenarlo. Qu\xE9 aproveche!"
   m_EditorClassIdentifier: 
-  type: {fileID: 0}
-  content: 
+  type: {fileID: 11400000, guid: a18f9437e3bbe8743ab998c2a7fc4ef7, type: 2}
   price:
     type: 0
     number: 0

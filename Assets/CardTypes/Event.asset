@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9b998eac540a942a68bbc5dfcaa811, type: 3}
   m_Name: Event
   m_EditorClassIdentifier: 
-  name: 
-  color: {r: 0, g: 0, b: 0, a: 0}
+  name: Evento
+  color: {r: 0.077162705, g: 0.6534739, b: 0.9622642, a: 0}
+  hasPrice: 0
