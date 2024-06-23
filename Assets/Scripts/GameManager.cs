@@ -597,6 +597,111 @@ public class GameManager : MonoBehaviour
         q.price = "--";
         questionList.Add(q);
 
+
+        // IDEES ----------------------------------------------------------------------------------------------------------------------------------------------------
+
+        //Nou mode = casual
+        //OG = hoy se folla
+        //Mixte = a lo loco
+
+        /*
+        q = new Question();
+        q.type = "Reto";
+        q.content = "Entra a la ducha / piscina con ropa";
+        q.price = "(Termina tu vaso)";
+        dareList.Add(q);
+
+        q = new Question();
+        q.type = "Reto";
+        q.content = "Reordena el grupo de más feo a más guapo sin revelar quienes són los extremos. Todo el mundo a especular!!!";
+        q.price = "(Termina tu vaso)";
+        dareList.Add(q);
+
+        q = new Question();
+        q.type = "Reto";
+        q.content = "Cierra los ojos, el resto del grupo te pondra un objeto en tus manos, adivina que es! Si fallas, bebe un trago.";
+        q.price = "(Bebe 3 tragos)";
+        dareList.Add(q);
+
+        q = new Question();
+        q.type = "Reto";
+        //POL HALP
+        q.content = "Cierra los ojos, el resto del grupo te pondra un objeto en tus boca, adivina que es! Si fallas, bebe un trago.";
+        q.content = "Cierra los ojos, el resto del grupo te dara una bebida, adivina cual es! Si fallas, bebe un trago.";
+        q.content = "Cierra los ojos, el resto del grupo te dara una bebida, adivina de quien es! Si fallas, bebe un trago.";
+        q.price = "(Bebe 5 tragos)";
+        dareList.Add(q);
+
+        q = new Question();
+        q.type = "Verdad";
+        q.content = "Crees que eres más guap@ que --Name--?";
+        q.price = "(Bebe 5 tragos)";
+        truthList.Add(q);
+
+        q = new Question();
+        q.type = "Verdad";
+        q.content = "Crees que eres más inteligente que --Name--?";
+        q.price = "(Bebe 5 tragos)";
+        truthList.Add(q);
+
+        q = new Question();
+        q.type = "Verdad";
+        q.content = "Cuenta un secreto vergonzoso tuyo que no sepa nadie de aquí";
+        q.price = "(Bebe 4 tragos)";
+        truthList.Add(q);
+
+        q = new Question();
+        q.type = "Evento";
+        q.content = "--Name--, bebe tantos tragos como jugadores haya en la mesa";
+        q.price = "--";
+        eventList.Add(q);
+
+        q = new Question();
+        q.type = "Evento";
+        q.content = "--Name--, reparte tantos tragos como jugadores hay en la mesa";
+        q.price = "--";
+        eventList.Add(q);
+
+        q = new Question();
+        q.type = "Evento";
+        q.content = "Todo el mundo excepto --Name-- cierra los ojos. --Name--, hora de hacer alquimia, añade alcohol al vaso de un jugador a tu elección";
+        q.price = "--";
+        eventList.Add(q);
+
+        q = new Question();
+        q.type = "Evento";
+        q.content = "--Name--, ahora eres un mago, puedes redirigir un castigo de una persona a otra de tu elección (tu incluido)";
+        q.price = "--";
+        eventList.Add(q);
+
+        q = new Question();
+        q.type = "Evento";
+        q.content = "--Name--, la proxima vez que bebas, todos los jugadores beben esa cantidad en tu lugar";
+        q.price = "--";
+        eventList.Add(q);
+
+        q = new Question();
+        q.type = "Evento";
+        q.content = "--Name-- y --Name2-- ahora estais enamorados, cuando bebe uno bebe el otro";
+        q.price = "--";
+        eventList.Add(q);
+
+        q = new Question();
+        q.type = "Evento";
+        q.content = "Todos los que hayan skipeado alguna verdad o reto esta noche beben";
+        q.price = "--";
+        eventList.Add(q);
+
+        q = new Question();
+        q.type = "Juego";
+        q.content = "--Name--, reparte tantos tragos como jugadores hay en la mesa";
+        q.price = "--";
+        eventList.Add(q);
+        */
+
+
+        //------------------------------------------------------------------------------------------------------------------------------------------------------
+
         //Question list
         foreach (Question question in eventList)
         {
@@ -617,7 +722,6 @@ public class GameManager : MonoBehaviour
         {
             questionList.Add(question);
         }
-
     }
 
     void Start()
