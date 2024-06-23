@@ -6,23 +6,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Card/New Card")]
 public class Card : ScriptableObject
 {
-    public enum Type {
-        [Description("Evento")]
-        Event,
-        [Description("Verdad")]
-        Truth,
-        [Description("Reto")]
-        Dare,
-        [Description("Qué prefieres?")]
-        Prefer,
-        [Description("BASO")]
-        BASO
-    }
     public enum PriceType
     {
-        [Description("Bebe")]
+        [Description("Bebe @% tragos")]
         Sip,
-        [Description("Termina")]
+        [Description("Termina @% vasos")]
         Finish,
         [Description("")]
         None
@@ -36,7 +24,7 @@ public class Card : ScriptableObject
         public int number;
     }
 
-    public Type type;
+    public CardType type;
     public string content;
     public Price price;
 }

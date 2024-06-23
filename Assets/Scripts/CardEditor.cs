@@ -1,4 +1,5 @@
 ﻿using UnityEditor;
+using UnityEngine.Networking.Types;
 using static Card;
 
 [CustomEditor(typeof(Card))]
@@ -9,7 +10,7 @@ public class CardEditor : Editor
     {
         var card = target as Card;
 
-        card.type = (Type)EditorGUILayout.EnumPopup("Type", card.type);
+        card.type = (CardType)EditorGUILayout.ObjectField(card.type, typeof(CardType), true);
         card.content = EditorGUILayout.TextField("Conent", card.content);
         card.price.type = (PriceType)EditorGUILayout.EnumPopup("Price Type", card.price.type);
         if (card.price.type != PriceType.None)
