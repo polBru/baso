@@ -605,6 +605,7 @@ public class GameManager : MonoBehaviour
         //Mixte = a lo loco
 
         /*
+        
         q = new Question();
         q.type = "Reto";
         q.content = "Entra a la ducha / piscina con ropa";
@@ -697,8 +698,42 @@ public class GameManager : MonoBehaviour
         q.content = "--Name--, reparte tantos tragos como jugadores hay en la mesa";
         q.price = "--";
         eventList.Add(q);
-        */
 
+        // He fet un nou mode de joc que és votación que bàsicament és que qui surt més votat beu, però nse si és molt sema pq pot portar mal rollos
+        // Tot i que si treiem les més semes rollo tonto o feo i deixem altres com borracho o introvertido pot estar bé I guess
+
+        q = new Question();
+        q.type = "Votación";
+        q.content = "El que vaya borracho más bebe";
+        q.price = "--";
+        eventList.Add(q);
+
+        q = new Question();
+        q.type = "Votación";
+        q.content = "El más feo bebe";
+        q.price = "--";
+        eventList.Add(q);
+
+        q = new Question();
+        q.type = "Votación";
+        q.content = "El más tonto bebe";
+        q.price = "--";
+        eventList.Add(q);
+
+        q = new Question();
+        q.type = "Votación";
+        q.content = "El más introvertido bebe";
+        q.price = "--";
+        eventList.Add(q);
+
+        q = new Question();
+        q.type = "Votación";
+        //POL HALP
+        q.content = @"El más ""fácil"" a la hora de ligar bebe";
+        q.price = "--";
+        eventList.Add(q);
+
+        */
 
         //------------------------------------------------------------------------------------------------------------------------------------------------------
 
