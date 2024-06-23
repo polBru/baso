@@ -12,8 +12,8 @@ public class Card : ScriptableObject
         Sip,
         [Description("Termina @% vasos")]
         Finish,
-        [Description("")]
-        None
+        [Description("Bebe @% chupitos")]
+        Shot
     }
 
     [System.Serializable]
@@ -25,6 +25,5 @@ public class Card : ScriptableObject
     }
 
     public CardType type;
-    public string content;
     public Price price;
 }

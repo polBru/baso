@@ -11,10 +11,11 @@ public class CardEditor : Editor
         var card = target as Card;
 
         card.type = (CardType)EditorGUILayout.ObjectField(card.type, typeof(CardType), true);
-        card.content = EditorGUILayout.TextField("Conent", card.content);
-        card.price.type = (PriceType)EditorGUILayout.EnumPopup("Price Type", card.price.type);
-        if (card.price.type != PriceType.None)
+        if (card.type != null && card.type.hasPrice) {
+            card.price.type = (PriceType)EditorGUILayout.EnumPopup("Price Type", card.price.type);
             card.price.number = EditorGUILayout.IntField("Price", card.price.number);
+        }
+        
         if (card.price.number < 0) 
             card.price.number = 0;
     }

@@ -188,7 +188,7 @@ public class GameManager : MonoBehaviour
 
         q = new Question();
         q.type = "Reto";
-        q.content = "Sacate una prenda de ropa";
+        q.content = "Sácate una prenda de ropa";
         q.price = "(Bebe 5 tragos)";
         dareList.Add(q);
 
@@ -212,7 +212,7 @@ public class GameManager : MonoBehaviour
 
         q = new Question();
         q.type = "Reto";
-        q.content = "Liate con la persona con la letra primera del alfabeto";
+        q.content = "Líate con la persona con la letra primera del alfabeto";
         q.price = "(Bebe 1 trago)";
         dareList.Add(q);
 
@@ -224,13 +224,13 @@ public class GameManager : MonoBehaviour
 
         q = new Question();
         q.type = "Reto";
-        q.content = "Liate con --Name--";
+        q.content = "Líate con --Name--";
         q.price = "(Bebe 2 tragos)";
         dareList.Add(q);
 
         q = new Question();
         q.type = "Reto";
-        q.content = "Elije a 2 personas para que se lien";
+        q.content = "Elije a 2 personas para que se líen";
         q.price = "(Bebe 1 trago)";
         dareList.Add(q);
 
@@ -296,7 +296,7 @@ public class GameManager : MonoBehaviour
 
         q = new Question();
         q.type = "Reto";
-        q.content = "Pasale una foto tuya a quien quien te interese más del grupo";
+        q.content = "Pásale una foto tuya a quien quien te interese más del grupo";
         q.price = "(Termina tu vaso)";
         dareList.Add(q);
 
@@ -350,7 +350,7 @@ public class GameManager : MonoBehaviour
 
         q = new Question();
         q.type = "Reto";
-        q.content = "Canviate de sitio con --Name--";
+        q.content = "Cámbiate de sitio con --Name--";
         q.price = "(Bebe 1 tragos)";
         dareList.Add(q);
 
