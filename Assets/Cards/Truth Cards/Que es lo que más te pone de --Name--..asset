@@ -15,4 +15,4 @@ MonoBehaviour:
   type: {fileID: 11400000, guid: e82668801d4050449822cd7716c38276, type: 2}
   price:
     type: 0
-    number: 0
+    number: 5
