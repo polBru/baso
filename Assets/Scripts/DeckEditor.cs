@@ -28,6 +28,7 @@ public class DeckEditor : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
+        script.allCards.RemoveAll(x => x != null);
         for (int i = 0; i < sp.Count; i++)
         {
             EditorGUILayout.PropertyField(sp[i]);
