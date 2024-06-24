@@ -1865,7 +1865,7 @@ MonoBehaviour:
   mainMenu: {fileID: 1964795636}
   introductionMenu: {fileID: 352420459}
   game: {fileID: 313218315}
-  ogDeck: {fileID: 11400000, guid: 12f9e09ecf950784f8c33381e548fd98, type: 2}
+  ogGameMode: {fileID: 11400000, guid: e2f6843c704bb0d43aafd3dce48d5164, type: 2}
 --- !u!4 &1108603933
 Transform:
   m_ObjectHideFlags: 0

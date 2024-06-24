@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    const string namePlaceholder = "--Name--";
+    const string namePlaceholder = "@p";
     const string pricePlaceholder = "@%";
 
     [Header("Debug")]
