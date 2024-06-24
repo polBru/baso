@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Truth
   m_EditorClassIdentifier: 
   name: Verdad
-  color: {r: 0.2622375, g: 0.7830189, b: 0.37148586, a: 0}
+  color: {r: 0.2622375, g: 0.7830189, b: 0.37148586, a: 1}
   hasPrice: 1
-  showName: 1
+  singleTarget: 1

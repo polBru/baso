@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Event
   m_EditorClassIdentifier: 
   name: Evento
-  color: {r: 0.077162705, g: 0.6534739, b: 0.9622642, a: 0}
+  color: {r: 0.077162705, g: 0.6534739, b: 0.9622642, a: 1}
   hasPrice: 0
+  singleTarget: 0

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Wyr
   m_EditorClassIdentifier: 
   name: "\xBFQu\xE9 prefieres?"
-  color: {r: 0.92941177, g: 0.6981132, b: 0.16794232, a: 0}
+  color: {r: 0.92941177, g: 0.6981132, b: 0.16794232, a: 1}
   hasPrice: 0
+  singleTarget: 0

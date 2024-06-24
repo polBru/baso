@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9b998eac540a942a68bbc5dfcaa811, type: 3}
   m_Name: Dare
   m_EditorClassIdentifier: 
-  name: Prueba
-  color: {r: 0.7075472, g: 0.16353686, b: 0.16353686, a: 0}
+  name: Reto
+  color: {r: 0.7075472, g: 0.16353686, b: 0.16353686, a: 1}
   hasPrice: 1
-  showName: 1
+  singleTarget: 1
