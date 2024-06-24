@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     const string namePlaceholder = "@p";
+    const string name2Placeholder = "@p2";
     const string pricePlaceholder = "@%";
 
     [Header("Debug")]
@@ -34,7 +35,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject game;
 
     [Header("Decks")]
-    [SerializeField] private GameMode ogGameMode;
+    [SerializeField] private GameMode casualGameMode;
+    [SerializeField] private GameMode spicyGameMode;
 
     private List<Card> cards = new List<Card>();
 
@@ -55,145 +57,6 @@ public class GameManager : MonoBehaviour
 #if UNITY_EDITOR
         if (debugEnabled) DebugInitialize();
 #endif
-
-
-        // IDEES ----------------------------------------------------------------------------------------------------------------------------------------------------
-
-        //Nou mode = casual
-        //OG = hoy se folla
-        //Mixte = a lo loco
-
-        
-        
-        /*q = new Question();
-        q.type = "Reto";
-        q.content = "Entra a la ducha / piscina con ropa";
-        q.price = "(Termina tu vaso)";
-        dareList.Add(q);
-
-        q = new Question();
-        q.type = "Reto";
-        q.content = "Reordena formando un círculo el grupo de más feo a más guapo sin revelar quiénes són los extremos. Todo el mundo a especular!!!";
-        q.price = "(Termina tu vaso)";
-        dareList.Add(q);
-
-        q = new Question();
-        q.type = "Reto";
-        q.content = "Cierra los ojos, el resto del grupo te pondra un objeto en tus manos, adivina que es! Si fallas, bebe un trago.";
-        q.price = "(Bebe 3 tragos)";
-        dareList.Add(q);
-
-        q = new Question();
-        q.type = "Reto";
-        q.content = "Cierra los ojos, el resto del grupo te dara una bebida, adivina cual es! Si fallas, bebe un trago.";
-        q.price = "(Bebe 5 tragos)";
-        dareList.Add(q);
-
-        q = new Question();
-        q.type = "Verdad";
-        q.content = "Crees que eres más guap@ que --Name--?";
-        q.price = "(Bebe 5 tragos)";
-        truthList.Add(q);
-
-        q = new Question();
-        q.type = "Verdad";
-        q.content = "Crees que eres más inteligente que --Name--?";
-        q.price = "(Bebe 5 tragos)";
-        truthList.Add(q);
-
-        q = new Question();
-        q.type = "Verdad";
-        q.content = "Cuenta un secreto tuyo que no sepa nadie de aquí";
-        q.price = "(Bebe 2 tragos)";
-        truthList.Add(q);
-
-        q = new Question();
-        q.type = "Evento";
-        q.content = "--Name--, bebe tantos tragos como jugadores haya en la mesa";
-        q.price = "--";
-        eventList.Add(q);
-
-        q = new Question();
-        q.type = "Evento";
-        q.content = "--Name--, reparte tantos tragos como jugadores hay en la mesa";
-        q.price = "--";
-        eventList.Add(q);
-
-        q = new Question();
-        q.type = "Evento";
-        q.content = "Todo el mundo excepto --Name-- cierra los ojos. --Name--, hora de hacer alquimia, añade alcohol al vaso de un jugador a tu elección";
-        q.price = "--";
-        eventList.Add(q);
-
-        q = new Question();
-        q.type = "Evento";
-        q.content = "--Name--, ahora eres un mago, puedes redirigir un castigo de una persona a otra de tu elección (tu incluido)";
-        q.price = "--";
-        eventList.Add(q);
-
-        q = new Question();
-        q.type = "Evento";
-        q.content = "--Name--, la próxima vez que bebas, todos los jugadores beben esa cantidad en tu lugar";
-        q.price = "--";
-        eventList.Add(q);
-
-        q = new Question();
-        q.type = "Evento";
-        q.content = "--Name-- y --Name2-- ahora estais enamorados, cuando bebe uno bebe el otro";
-        q.price = "--";
-        eventList.Add(q);
-
-        q = new Question();
-        q.type = "Evento";
-        q.content = "Castigo para los cobardes! Todos los que se hayan cagado con alguna verdad o reto esta noche beben";
-        q.price = "--";
-        eventList.Add(q);
-
-        q = new Question();
-        q.type = "Juego";
-        q.content = "--Name--, reparte tantos tragos como jugadores hay en la mesa";
-        q.price = "--";
-        eventList.Add(q);
-
-        // He fet un nou mode de joc que és votación que bàsicament és que qui surt més votat beu, però nse si és molt sema pq pot portar mal rollos
-        // Tot i que si treiem les més semes rollo tonto o feo i deixem altres com borracho o introvertido pot estar bé I guess
-
-        q = new Question();
-        q.type = "Votación";
-        q.content = "El que vaya borracho más bebe";
-        q.price = "--";
-        eventList.Add(q);
-
-        q = new Question();
-        q.type = "Votación";
-        q.content = "El más guapo bebe";
-        q.price = "--";
-        eventList.Add(q);
-
-        q = new Question();
-        q.type = "Votación";
-        q.content = "El más inteligente bebe";
-        q.price = "--";
-        eventList.Add(q);
-
-        q = new Question();
-        q.type = "Votación";
-        q.content = "El peor conductor bebe";
-        q.price = "--";
-        eventList.Add(q);
-
-        q = new Question();
-        q.type = "Votación";
-        q.content = "El más introvertido bebe";
-        q.price = "--";
-        eventList.Add(q);
-
-        q = new Question();
-        q.type = "Votación";
-        //POL HALP
-        q.content = @"El más ""fácil"" a la hora de ligar bebe";
-        q.price = "--";
-        eventList.Add(q);*/
 
         AddCards();
     }
@@ -226,7 +89,8 @@ public class GameManager : MonoBehaviour
     void AddCards()
     {
         //Check game mode
-        cards.AddRange(ogGameMode.cards);
+        //cards.AddRange(casualGameMode.cards);
+        cards.AddRange(spicyGameMode.cards);
     }
 
     #region MainMenu
@@ -272,7 +136,7 @@ public class GameManager : MonoBehaviour
     private void DebugLists()
     {
         Debug.Log("Name List: " + nameList.Count);
-        Debug.Log("Question List: " + ogGameMode.cards.Count);
+        Debug.Log("Question List: " + spicyGameMode.cards.Count);
     }
 #endif
 

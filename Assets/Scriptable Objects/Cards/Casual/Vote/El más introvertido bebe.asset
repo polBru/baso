@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db146d26af39d5b44a6c16008ce253e1, type: 3}
-  m_Name: Spicy BASO
+  m_Script: {fileID: 11500000, guid: 3ed8ce4e3b86a2d49872581c4a3ce40c, type: 3}
+  m_Name: "El m\xE1s introvertido bebe"
   m_EditorClassIdentifier: 
-  cards:
-  - {fileID: 11400000, guid: bc59e04626abed14c80244b38d6f29d2, type: 2}
+  type: {fileID: 11400000, guid: e7a7adae6647a8449b7c99848be2c692, type: 2}
+  content: "El m\xE1s introvertido bebe"
+  price:
+    type: 0
+    number: 0

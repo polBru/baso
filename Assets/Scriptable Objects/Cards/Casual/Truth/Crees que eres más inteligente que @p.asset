@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed8ce4e3b86a2d49872581c4a3ce40c, type: 3}
+  m_Name: "Crees que eres m\xE1s inteligente que @p"
+  m_EditorClassIdentifier: 
+  type: {fileID: 11400000, guid: e82668801d4050449822cd7716c38276, type: 2}
+  content: "Crees que eres m\xE1s inteligente que @p"
+  price:
+    type: 0
+    number: 5

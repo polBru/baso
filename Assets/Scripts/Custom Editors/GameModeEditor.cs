@@ -27,14 +27,15 @@ public class GameModeEditor : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
-        script.cards.RemoveAll(x => x != null);
+        script.cards.Clear();
         for (int i = 0; i < sp.Count; i++)
         {
             EditorGUILayout.PropertyField(sp[i]);
         }
         foreach (Deck deck in script.decks)
         {
-            script.cards.AddRange(deck.cards);
+            if (deck != null)
+                script.cards.AddRange(deck.cards);
         }
         serializedObject.ApplyModifiedProperties();
     }
