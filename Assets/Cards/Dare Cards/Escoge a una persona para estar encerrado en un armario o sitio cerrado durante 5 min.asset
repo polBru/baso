@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Escoge a una persona para estar encerrado en un armario o sitio cerrado
     durante 5 min
   m_EditorClassIdentifier: 
-  type: {fileID: 0}
+  type: {fileID: 11400000, guid: a19042183f0e84348b585892e78b929f, type: 2}
   price:
-    type: 0
-    number: 0
+    type: 2
+    number: 2

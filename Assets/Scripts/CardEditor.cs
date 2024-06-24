@@ -30,7 +30,6 @@ public class CardEditor : Editor {
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
-        var card = target as Card;
         for (int i = 0; i < sp.Count; i++)
         {
             if (sp[i] == price)
@@ -48,7 +47,6 @@ public class CardEditor : Editor {
                 EditorGUILayout.PropertyField(sp[i]);
             }
         }
-
         serializedObject.ApplyModifiedProperties();
     }
 }

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: 922941b77c2175147840b44de20dbd60, type: 2}
   price:
-    type: 2
+    type: 0
     number: 0

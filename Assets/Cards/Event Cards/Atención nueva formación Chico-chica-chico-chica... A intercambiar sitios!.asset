@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "Atenci\xF3n nueva formaci\xF3n Chico-chica-chico-chica... A intercambiar
     sitios!"
   m_EditorClassIdentifier: 
-  type: {fileID: 0}
+  type: {fileID: 11400000, guid: 922941b77c2175147840b44de20dbd60, type: 2}
   price:
     type: 0
     number: 0

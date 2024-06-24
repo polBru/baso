@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "Cu\xE1l es el sitio m\xE1s raro en el que has metido el pene o el objeto
     m\xE1s raro que te has metido por la vagina"
   m_EditorClassIdentifier: 
-  type: {fileID: 0}
+  type: {fileID: 11400000, guid: e82668801d4050449822cd7716c38276, type: 2}
   price:
     type: 0
     number: 0

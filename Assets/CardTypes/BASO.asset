@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c9b998eac540a942a68bbc5dfcaa811, type: 3}
-  m_Name: Baso
+  m_Name: BASO
   m_EditorClassIdentifier: 
   name: BASO
   color: {r: 0, g: 0, b: 0, a: 0}

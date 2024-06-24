@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed8ce4e3b86a2d49872581c4a3ce40c, type: 3}
   m_Name: Recibir o dar sexo oral
   m_EditorClassIdentifier: 
-  type: {fileID: 0}
+  type: {fileID: 11400000, guid: 060682b9a4f90104e8984ddae6f0c6e4, type: 2}
   price:
     type: 0
     number: 0

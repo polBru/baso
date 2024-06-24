@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed8ce4e3b86a2d49872581c4a3ce40c, type: 3}
   m_Name: "Qu\xEDtale una prenda de ropa a --Name--"
   m_EditorClassIdentifier: 
-  type: {fileID: 0}
+  type: {fileID: 11400000, guid: a19042183f0e84348b585892e78b929f, type: 2}
   price:
     type: 0
-    number: 0
+    number: 3
