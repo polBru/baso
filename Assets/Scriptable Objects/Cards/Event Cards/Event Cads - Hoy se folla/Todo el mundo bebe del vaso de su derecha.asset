@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Todo el mundo bebe del vaso de su derecha
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: 922941b77c2175147840b44de20dbd60, type: 2}
+  content: Todo el mundo bebe del vaso de su derecha
   price:
     type: 0
     number: 0

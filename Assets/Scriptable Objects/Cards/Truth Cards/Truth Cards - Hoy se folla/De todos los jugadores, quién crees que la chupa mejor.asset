@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "De todos los jugadores, qui\xE9n crees que la chupa mejor"
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: e82668801d4050449822cd7716c38276, type: 2}
+  content: "De todos los jugadores, qui\xE9n crees que la chupa mejor"
   price:
     type: 0
     number: 2

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Escoge con quien harias un trio de los presentes
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: a19042183f0e84348b585892e78b929f, type: 2}
+  content: Escoge con quien harias un trio de los presentes
   price:
     type: 1
     number: 1

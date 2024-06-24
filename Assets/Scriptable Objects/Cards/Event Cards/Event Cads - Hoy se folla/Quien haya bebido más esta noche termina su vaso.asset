@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "Quien haya bebido m\xE1s esta noche termina su vaso"
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: 922941b77c2175147840b44de20dbd60, type: 2}
+  content: "Quien haya bebido m\xE1s esta noche termina su vaso"
   price:
     type: 0
     number: 0

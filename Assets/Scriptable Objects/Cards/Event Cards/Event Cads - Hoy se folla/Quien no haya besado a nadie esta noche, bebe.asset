@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Quien no haya besado a nadie esta noche, bebe
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: 922941b77c2175147840b44de20dbd60, type: 2}
+  content: Quien no haya besado a nadie esta noche, bebe
   price:
     type: 0
     number: 0

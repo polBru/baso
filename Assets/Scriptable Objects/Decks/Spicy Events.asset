@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db146d26af39d5b44a6c16008ce253e1, type: 3}
+  m_Name: Spicy Events
+  m_EditorClassIdentifier: 
+  cards:
+  - {fileID: 11400000, guid: 793ac636eefb2164dbb04a0b33034772, type: 2}
+  - {fileID: 11400000, guid: 6b85f4d1853b7af46bf2633c7a93b69c, type: 2}
+  - {fileID: 11400000, guid: a94b48fe1cc906c4b87d81027adaeed5, type: 2}
+  - {fileID: 11400000, guid: f35e34f8dc02d884d85804190640831b, type: 2}
+  - {fileID: 11400000, guid: efa3369104b1a6d4b90aabb45024810a, type: 2}
+  - {fileID: 11400000, guid: 1a22d1d9f55d0264585e227c434a4e5e, type: 2}
+  - {fileID: 11400000, guid: 8a2ab1423e5d93846976a530019b5407, type: 2}
+  - {fileID: 11400000, guid: 6da66fda7421d714e89d3be7c0b8dec5, type: 2}
+  - {fileID: 11400000, guid: 6940a85f82434a549bffaa1a3d6295ff, type: 2}
+  - {fileID: 11400000, guid: b559f900d27ad3b4c9d8754c18c8d870, type: 2}
+  - {fileID: 11400000, guid: aa0c53a0cace20a4a90a5e86942287d2, type: 2}
+  - {fileID: 11400000, guid: f7dd067910f894a48afa3bbd8d22c9d1, type: 2}
+  - {fileID: 11400000, guid: 572c508bc38e6e84db6d3825b6022391, type: 2}
+  - {fileID: 11400000, guid: 7d5e5e2a624b6ff4aa9b00528d2b73b0, type: 2}
+  - {fileID: 11400000, guid: bc94d20878d39074b87efead6056800e, type: 2}
+  - {fileID: 11400000, guid: 3031458c91eb47e43abfbd5ecb1301f2, type: 2}
+  - {fileID: 11400000, guid: e1dd6249e98612b4c8b691ca8996d38e, type: 2}
+  - {fileID: 11400000, guid: f983d4b0048a9724c9a7fbdaeed3d6d4, type: 2}
+  - {fileID: 11400000, guid: 813f2db5e7bd4c44badb1079df462265, type: 2}
+  - {fileID: 11400000, guid: 4cfd92c09bc5d3c4793b47aa796ed220, type: 2}

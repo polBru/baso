@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Di una broma sucia
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: a19042183f0e84348b585892e78b929f, type: 2}
+  content: Di una broma sucia
   price:
     type: 0
     number: 1

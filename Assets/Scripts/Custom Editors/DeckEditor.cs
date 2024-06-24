@@ -10,7 +10,6 @@ public class DeckEditor : Editor
 {
     Deck script;
     List<SerializedProperty> sp;
-    SerializedProperty price;
 
     void OnEnable()
     {
@@ -28,16 +27,10 @@ public class DeckEditor : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
-        script.allCards.RemoveAll(x => x != null);
         for (int i = 0; i < sp.Count; i++)
         {
             EditorGUILayout.PropertyField(sp[i]);
         }
-        script.allCards.AddRange(script.eventCards);
-        script.allCards.AddRange(script.truthCards);
-        script.allCards.AddRange(script.dareCards);
-        script.allCards.AddRange(script.wyrCards);
-        script.allCards.Add(script.basoCard);
         serializedObject.ApplyModifiedProperties();
     }
 }

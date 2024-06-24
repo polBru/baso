@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db146d26af39d5b44a6c16008ce253e1, type: 3}
+  m_Name: Scpicy Wyr
+  m_EditorClassIdentifier: 
+  cards:
+  - {fileID: 11400000, guid: ba4c884d358480b4c90be3799489e749, type: 2}
+  - {fileID: 11400000, guid: 93ad8a365667bb94781f53b2a7a3c00f, type: 2}
+  - {fileID: 11400000, guid: a20e7a0c0d7aad64c8cad308c1c7a87d, type: 2}
+  - {fileID: 11400000, guid: f18c97a353485b9478a2dc299721401a, type: 2}
+  - {fileID: 11400000, guid: 7c81ef4906e51ac4a83920cff1679be3, type: 2}
+  - {fileID: 11400000, guid: 2b3fc5ba5a4ab2f4ea060374a2fc54ac, type: 2}
+  - {fileID: 11400000, guid: 0a63955d002d333428efcad904de21a1, type: 2}
+  - {fileID: 11400000, guid: bfaa3a9f29b3c6645b274eb8242d4f05, type: 2}
+  - {fileID: 11400000, guid: a8e82ba48e8775148b02d690c0e6d257, type: 2}
+  - {fileID: 11400000, guid: 3a992a253f4555749aef98859921ad14, type: 2}
+  - {fileID: 11400000, guid: 3bd8ca53e7aec5b449d50babcc1d875b, type: 2}
+  - {fileID: 11400000, guid: 85499f80fc3e59043b809d55642f483d, type: 2}
+  - {fileID: 11400000, guid: 45d96c9529317d8479aedd15a9b86e7a, type: 2}
+  - {fileID: 11400000, guid: 7cff69d3c70858b449933b9f13a45295, type: 2}
+  - {fileID: 11400000, guid: bf37c206197d76e45b6a40bb7aacdc51, type: 2}
+  - {fileID: 11400000, guid: b1ffc89fd66fce44393c59bd665d61f1, type: 2}

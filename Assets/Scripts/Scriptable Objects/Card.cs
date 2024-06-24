@@ -25,5 +25,6 @@ public class Card : ScriptableObject
     }
 
     public CardType type;
+    public string content;
     public Price price;
 }

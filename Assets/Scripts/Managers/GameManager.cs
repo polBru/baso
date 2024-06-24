@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject game;
 
     [Header("Decks")]
-    [SerializeField] private Deck ogDeck;
+    [SerializeField] private GameMode ogGameMode;
 
     private List<Card> cards = new List<Card>();
 
@@ -226,7 +226,7 @@ public class GameManager : MonoBehaviour
     void AddCards()
     {
         //Check game mode
-        cards.AddRange(ogDeck.allCards);
+        cards.AddRange(ogGameMode.cards);
     }
 
     #region MainMenu
@@ -272,11 +272,7 @@ public class GameManager : MonoBehaviour
     private void DebugLists()
     {
         Debug.Log("Name List: " + nameList.Count);
-        Debug.Log("Question List: " + ogDeck.allCards.Count);
-        Debug.Log("Event List: " + ogDeck.eventCards.Count);
-        Debug.Log("Dare List: " + ogDeck.dareCards.Count);
-        Debug.Log("Truth List: " + ogDeck.truthCards.Count);
-        Debug.Log("WyR List: " + ogDeck.wyrCards.Count);
+        Debug.Log("Question List: " + ogGameMode.cards.Count);
     }
 #endif
 
@@ -351,7 +347,7 @@ public class GameManager : MonoBehaviour
     {
         string content = "";
         if (c.type.singleTarget) content = $"{nameList[currentName]}: ";
-        return $"{content}{ReplaceContent(c.name)}";
+        return $"{content}{ReplaceContent(c.content)}";
     }
 
     //Buttons

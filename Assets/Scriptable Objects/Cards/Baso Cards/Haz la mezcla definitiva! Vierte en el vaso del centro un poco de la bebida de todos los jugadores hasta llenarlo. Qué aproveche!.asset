@@ -14,6 +14,8 @@ MonoBehaviour:
     de todos los jugadores hasta llenarlo. Qu\xE9 aproveche!"
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: a18f9437e3bbe8743ab998c2a7fc4ef7, type: 2}
+  content: "Haz la mezcla definitiva! Vierte en el vaso del centro un poco de la
+    bebida de todos los jugadores hasta llenarlo. Qu\xE9 aproveche!"
   price:
     type: 0
     number: 0

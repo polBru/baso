@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "Frota tu cara con las partes \xEDntimas de --Name--"
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: a19042183f0e84348b585892e78b929f, type: 2}
+  content: "Frota tu cara con las partes \xEDntimas de --Name--"
   price:
     type: 1
     number: 1

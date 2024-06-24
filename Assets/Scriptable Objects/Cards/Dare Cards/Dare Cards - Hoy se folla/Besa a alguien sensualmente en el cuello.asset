@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Besa a alguien sensualmente en el cuello
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: a19042183f0e84348b585892e78b929f, type: 2}
+  content: Besa a alguien sensualmente en el cuello
   price:
     type: 0
     number: 3

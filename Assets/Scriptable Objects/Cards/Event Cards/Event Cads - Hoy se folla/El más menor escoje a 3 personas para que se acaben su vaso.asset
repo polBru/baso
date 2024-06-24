@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "El m\xE1s menor escoje a 3 personas para que se acaben su vaso"
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: 922941b77c2175147840b44de20dbd60, type: 2}
+  content: "El m\xE1s menor escoje a 3 personas para que se acaben su vaso"
   price:
     type: 0
     number: 0

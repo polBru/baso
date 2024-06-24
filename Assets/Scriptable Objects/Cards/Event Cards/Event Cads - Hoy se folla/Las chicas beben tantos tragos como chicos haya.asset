@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Las chicas beben tantos tragos como chicos haya
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: 922941b77c2175147840b44de20dbd60, type: 2}
+  content: Las chicas beben tantos tragos como chicos haya
   price:
     type: 0
     number: 0

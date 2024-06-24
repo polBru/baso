@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Escoge a una persona a ciegas y besate con ella
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: a19042183f0e84348b585892e78b929f, type: 2}
+  content: Escoge a una persona a ciegas y besate con ella
   price:
     type: 0
     number: 5

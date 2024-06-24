@@ -14,6 +14,8 @@ MonoBehaviour:
     como gente se haya acostado"
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: 922941b77c2175147840b44de20dbd60, type: 2}
+  content: "La persona que se haya acostado con m\xE1s gente reparte tantos tragos
+    como gente se haya acostado"
   price:
     type: 0
     number: 0

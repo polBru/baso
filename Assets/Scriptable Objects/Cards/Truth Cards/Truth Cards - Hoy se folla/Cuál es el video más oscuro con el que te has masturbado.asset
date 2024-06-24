@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "Cu\xE1l es el video m\xE1s oscuro con el que te has masturbado"
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: e82668801d4050449822cd7716c38276, type: 2}
+  content: "Cu\xE1l es el video m\xE1s oscuro con el que te has masturbado"
   price:
     type: 0
     number: 4

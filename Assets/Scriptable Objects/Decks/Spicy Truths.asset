@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db146d26af39d5b44a6c16008ce253e1, type: 3}
+  m_Name: Spicy Truths
+  m_EditorClassIdentifier: 
+  cards:
+  - {fileID: 11400000, guid: e03649a7061daf748a14f537936440cd, type: 2}
+  - {fileID: 11400000, guid: 9f80ec7af66bf294cbace7d9d9b2c4d1, type: 2}
+  - {fileID: 11400000, guid: f6666dcd853fdab48b3623aa8a153d09, type: 2}
+  - {fileID: 11400000, guid: 34822645f08b0f34fa163db3b1318ebd, type: 2}
+  - {fileID: 11400000, guid: ab02cf4b707fed040b0f2ff1df93b1f7, type: 2}
+  - {fileID: 11400000, guid: a7813ce19d21b55439777f6c767f08b8, type: 2}
+  - {fileID: 11400000, guid: 123a43595f4da254da345ababb576a58, type: 2}
+  - {fileID: 11400000, guid: ce3b9d51f4528024c81defb6275478b6, type: 2}
+  - {fileID: 11400000, guid: c9304260328651f4aaf6036d223cf3e7, type: 2}
+  - {fileID: 11400000, guid: 3da8a5004bedefb4b908a6ee7f60a4b8, type: 2}
+  - {fileID: 11400000, guid: 16e4e5e2af2c3d64b9c0ede01a2c09fa, type: 2}
+  - {fileID: 11400000, guid: d0147efd50ccf9e4daa35ed6fa4cba17, type: 2}
+  - {fileID: 11400000, guid: b52b7c03069c58d449d58c90bd3373c6, type: 2}
+  - {fileID: 11400000, guid: 52ad25596436d6f4caa120229b55065b, type: 2}
+  - {fileID: 11400000, guid: 006433cda9fb430468f67eb13a385394, type: 2}
+  - {fileID: 11400000, guid: d3d92a76763b09a428e460c14bafb6c3, type: 2}
+  - {fileID: 11400000, guid: 4daa60028c1619e4bbb8c15481d94a4e, type: 2}
+  - {fileID: 11400000, guid: 9c8cce3610606754f8b4b608e0aaa1bd, type: 2}
+  - {fileID: 11400000, guid: 800f7a517469fa84691444e6cb1c8256, type: 2}
+  - {fileID: 11400000, guid: 682918295a5a6fa43bd2c87dc43f414b, type: 2}
+  - {fileID: 11400000, guid: fd2398efe24b79c4c9e10197d74854fa, type: 2}
+  - {fileID: 11400000, guid: e1528a3e1efea1d4c8a5d431e81afb2a, type: 2}
+  - {fileID: 11400000, guid: 087b270e744f3bd41b42dc35519a5aea, type: 2}

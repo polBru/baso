@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Bebe 2 tragos y reparte 4
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: a19042183f0e84348b585892e78b929f, type: 2}
+  content: Bebe 2 tragos y reparte 4
   price:
     type: 0
     number: 1

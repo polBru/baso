@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Todas la chicas se quitan una prenda o le quitan una prenda a un chico
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: 922941b77c2175147840b44de20dbd60, type: 2}
+  content: Todas la chicas se quitan una prenda o le quitan una prenda a un chico
   price:
     type: 0
     number: 0

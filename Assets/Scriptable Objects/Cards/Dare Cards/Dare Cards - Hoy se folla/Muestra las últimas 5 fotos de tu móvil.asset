@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "Muestra las \xFAltimas 5 fotos de tu m\xF3vil"
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: a19042183f0e84348b585892e78b929f, type: 2}
+  content: "Muestra las \xFAltimas 5 fotos de tu m\xF3vil"
   price:
     type: 0
     number: 5

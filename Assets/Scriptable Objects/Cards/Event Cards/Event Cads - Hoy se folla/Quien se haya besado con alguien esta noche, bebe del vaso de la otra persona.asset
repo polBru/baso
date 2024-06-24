@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Quien se haya besado con alguien esta noche, bebe del vaso de la otra persona
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: 922941b77c2175147840b44de20dbd60, type: 2}
+  content: Quien se haya besado con alguien esta noche, bebe del vaso de la otra
+    persona
   price:
     type: 0
     number: 0

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Enviar nudes a tu jefeprofessor o enviar nudes a tu madre
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: 060682b9a4f90104e8984ddae6f0c6e4, type: 2}
+  content: Enviar nudes a tu jefeprofessor o enviar nudes a tu madre
   price:
     type: 0
     number: 0

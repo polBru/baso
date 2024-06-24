@@ -12,6 +12,7 @@ public class CardEditor : Editor {
     Card script;
     List<SerializedProperty> sp;
     SerializedProperty price;
+    SerializedProperty content;
 
     void OnEnable()
     {
@@ -24,6 +25,9 @@ public class CardEditor : Editor {
             if (sp[i].type == "Price")
             {
                 price = sp[i];
+            } else if (mi[i].Name == "content")
+            {
+                content = sp[i];
             }
         }
     }
@@ -47,6 +51,7 @@ public class CardEditor : Editor {
                 EditorGUILayout.PropertyField(sp[i]);
             }
         }
+        //content.stringValue = script.name; //Actualizar contenido de la card con su nombre
         serializedObject.ApplyModifiedProperties();
     }
 }

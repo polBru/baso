@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "Bebe si tu amor plat\xF3nico est\xE1 hoy aqu\xED"
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: 922941b77c2175147840b44de20dbd60, type: 2}
+  content: "Bebe si tu amor plat\xF3nico est\xE1 hoy aqu\xED"
   price:
     type: 0
     number: 0

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Te gustaria tener una experiencia sexual con alguien de tu mismo sexo
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: e82668801d4050449822cd7716c38276, type: 2}
+  content: Te gustaria tener una experiencia sexual con alguien de tu mismo sexo
   price:
     type: 0
     number: 2

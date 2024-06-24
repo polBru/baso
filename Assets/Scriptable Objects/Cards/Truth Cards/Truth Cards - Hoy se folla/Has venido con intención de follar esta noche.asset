@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "Has venido con intenci\xF3n de follar esta noche"
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: e82668801d4050449822cd7716c38276, type: 2}
+  content: "Has venido con intenci\xF3n de follar esta noche"
   price:
     type: 0
     number: 4

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "P\xE1sale una foto tuya a quien quien te interese m\xE1s del grupo"
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: a19042183f0e84348b585892e78b929f, type: 2}
+  content: "P\xE1sale una foto tuya a quien quien te interese m\xE1s del grupo"
   price:
     type: 1
     number: 1

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Dale un beso a una persona donde ella quiera
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: a19042183f0e84348b585892e78b929f, type: 2}
+  content: Dale un beso a una persona donde ella quiera
   price:
     type: 0
     number: 2

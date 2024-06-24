@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "Quien es el m\xE1s sexy del grupo"
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: e82668801d4050449822cd7716c38276, type: 2}
+  content: "Quien es el m\xE1s sexy del grupo"
   price:
     type: 0
     number: 4

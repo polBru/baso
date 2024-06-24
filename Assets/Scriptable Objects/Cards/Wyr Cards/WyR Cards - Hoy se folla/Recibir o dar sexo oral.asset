@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Recibir o dar sexo oral
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: 060682b9a4f90104e8984ddae6f0c6e4, type: 2}
+  content: Recibir o dar sexo oral
   price:
     type: 0
     number: 0

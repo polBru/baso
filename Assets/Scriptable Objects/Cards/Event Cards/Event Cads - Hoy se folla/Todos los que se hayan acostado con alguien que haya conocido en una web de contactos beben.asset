@@ -14,6 +14,8 @@ MonoBehaviour:
     de contactos beben
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: 922941b77c2175147840b44de20dbd60, type: 2}
+  content: Todos los que se hayan acostado con alguien que haya conocido en una web
+    de contactos beben
   price:
     type: 0
     number: 0

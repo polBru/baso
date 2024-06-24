@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "Qu\xEDtale una prenda de ropa a --Name--"
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: a19042183f0e84348b585892e78b929f, type: 2}
+  content: "Qu\xEDtale una prenda de ropa a --Name--"
   price:
     type: 0
     number: 3

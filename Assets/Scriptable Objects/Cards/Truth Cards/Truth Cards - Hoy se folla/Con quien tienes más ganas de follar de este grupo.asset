@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "Con quien tienes m\xE1s ganas de follar de este grupo"
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: e82668801d4050449822cd7716c38276, type: 2}
+  content: "Con quien tienes m\xE1s ganas de follar de este grupo"
   price:
     type: 1
     number: 1

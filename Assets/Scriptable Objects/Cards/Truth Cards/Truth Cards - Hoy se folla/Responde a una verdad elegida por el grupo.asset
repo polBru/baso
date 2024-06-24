@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Responde a una verdad elegida por el grupo
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: e82668801d4050449822cd7716c38276, type: 2}
+  content: Responde a una verdad elegida por el grupo
   price:
     type: 0
     number: 3

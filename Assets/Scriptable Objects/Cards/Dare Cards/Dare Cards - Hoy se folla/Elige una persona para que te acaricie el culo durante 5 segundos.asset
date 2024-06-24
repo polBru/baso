@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Elige una persona para que te acaricie el culo durante 5 segundos
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: a19042183f0e84348b585892e78b929f, type: 2}
+  content: Elige una persona para que te acaricie el culo durante 5 segundos
   price:
     type: 0
     number: 2
