@@ -533,7 +533,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1108603932}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: Next
-        m_Mode: 6
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -931,8 +931,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1108603932}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Next
-        m_Mode: 6
+        m_MethodName: Repeat
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1865,6 +1865,7 @@ MonoBehaviour:
   mainMenu: {fileID: 1964795636}
   introductionMenu: {fileID: 352420459}
   game: {fileID: 313218315}
+  ogDeck: {fileID: 11400000, guid: 12f9e09ecf950784f8c33381e548fd98, type: 2}
 --- !u!4 &1108603933
 Transform:
   m_ObjectHideFlags: 0

@@ -15,3 +15,4 @@ MonoBehaviour:
   name: Prueba
   color: {r: 0.7075472, g: 0.16353686, b: 0.16353686, a: 0}
   hasPrice: 1
+  showName: 1

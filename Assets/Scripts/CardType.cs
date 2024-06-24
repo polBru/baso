@@ -8,4 +8,5 @@ public class CardType : ScriptableObject
     public new string name;
     public Color color;
     public bool hasPrice;
+    public bool showName;
 }

@@ -1,11 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Reflection;
 using Unity.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    const string namePlaceholder = "--Name--";
+    const string pricePlaceholder = "@%";
+
     [Header("Debug")]
     [SerializeField] private bool debugEnabled = true;
     [SerializeField] private List<string> debugNames;
@@ -28,6 +36,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject introductionMenu;
     [SerializeField] private GameObject game;
 
+    [Header("Decks")]
+    [SerializeField] private Deck ogDeck;
+
+    private List<Card> cards = new List<Card>();
 
     [Header("Lists")]
     private List<string> nameList = new List<string>();
@@ -757,6 +769,8 @@ public class GameManager : MonoBehaviour
         {
             questionList.Add(question);
         }
+
+        AddCards();
     }
 
     void Start()
@@ -783,6 +797,12 @@ public class GameManager : MonoBehaviour
         });
     }
 #endif
+
+    void AddCards()
+    {
+        //Check game mode
+        cards.AddRange(ogDeck.allCards);
+    }
 
     #region MainMenu
     public void AddPlayer()
@@ -818,7 +838,7 @@ public class GameManager : MonoBehaviour
         introductionMenu.SetActive(false);
         game.SetActive(true);
 
-        Next(true);
+        Next();
 #if UNITY_EDITOR
         if (debugEnabled) DebugLists();
 
@@ -827,25 +847,26 @@ public class GameManager : MonoBehaviour
     private void DebugLists()
     {
         Debug.Log("Name List: " + nameList.Count);
-        Debug.Log("Question List: " + questionList.Count);
-        Debug.Log("Event List: " + eventList.Count);
-        Debug.Log("Dare List: " + dareList.Count);
-        Debug.Log("Truth List: " + truthList.Count);
-        Debug.Log("WyR List: " + wyrList.Count);
+        Debug.Log("Question List: " + ogDeck.allCards.Count);
+        Debug.Log("Event List: " + ogDeck.eventCards.Count);
+        Debug.Log("Dare List: " + ogDeck.dareCards.Count);
+        Debug.Log("Truth List: " + ogDeck.truthCards.Count);
+        Debug.Log("WyR List: " + ogDeck.wyrCards.Count);
     }
 #endif
 
     #endregion
 
     #region Game
-    private Question GetRandomQuestion()
+
+    private Card GetRandoomCard()
     {
-        return questionList[Random.Range(0, questionList.Count)];
+        return cards[UnityEngine.Random.Range(0, questionList.Count)];
     }
 
     private string GetRandomName()
     {
-        string name = nameList[Random.Range(0, nameList.Count)];
+        string name = nameList[UnityEngine.Random.Range(0, nameList.Count)];
         if (name == nameList[currentName]) return GetRandomName();
 
         return name;
@@ -856,13 +877,17 @@ public class GameManager : MonoBehaviour
         currentName = (currentName == nameList.Count - 1) ? 0 : currentName + 1;
     }
 
-    private string ReplaceContent(Question q)
+    private string ReplaceContent(string content)
     {
-        string content;
-        if (q.content.Contains("--Name--")) content = q.content.Replace("--Name--", GetRandomName());
-        else content = q.content;
+        string newContent = content;
+        if (content.Contains(namePlaceholder)) newContent = content.Replace(namePlaceholder, GetRandomName());
 
-        return content;
+        return newContent;
+    }
+
+    private string ReplacePriceText(string content, int number)
+    {
+        return content.Replace(pricePlaceholder, number.ToString());
     }
 
     private void ChangeTextToColor(string hexadeximal)
@@ -876,72 +901,48 @@ public class GameManager : MonoBehaviour
         skipText.color = color;
     }
 
-    //Buttons
-    public void Next(bool skipPlayer)
+    public string GetEnumDescription(Enum value)
     {
-        Question q = GetRandomQuestion();
+        FieldInfo fi = value.GetType().GetField(value.ToString());
+
+        DescriptionAttribute[] attributes = fi.GetCustomAttributes(typeof(DescriptionAttribute), false) as DescriptionAttribute[];
+
+        if (attributes != null && attributes.Any())
+        {
+            return attributes.First().Description;
+        }
+
+        return value.ToString();
+    }
+
+    private string GetContentText(Card c)
+    {
+        string content = "";
+        if (c.type.showName) content = $"{nameList[currentName]}: ";
+        return $"{content}{ReplaceContent(c.name)}";
+    }
+
+    //Buttons
+    public void GenerateCard()
+    {
+        Card c = GetRandoomCard();
         ChangeTextToColor("#323232"); //black
-        skipText.enabled = true;
+        skipText.enabled = c.type.hasPrice;
+        background.color = c.type.color;
+        typeText.text = c.type.name;
+        contentText.text = GetContentText(c);
+        skipText.text = "No tengo huevos\n" + ReplacePriceText(GetEnumDescription(c.price.type), c.price.number);
+    }
 
-        //Skip event and wyd in case they don't have balls
-        if (!skipPlayer)
-        {
-            if (q.type == "Evento" || q.type == "Qué prefieres?")
-            {
-                Next(false);
-                return;
-            }
-        }
+    public void Next() 
+    {
+        NextPlayer();
+        GenerateCard();
+    }
 
-        //Show card
-        if (q.type == "Evento")
-        {
-            background.color = Color.cyan;
-            typeText.text = q.type;
-            ReplaceContent(q);
-            contentText.text = ReplaceContent(q);
-            skipText.enabled = false;
-        }
-        else if (q.type == "Reto")
-        {
-            if (skipPlayer) NextPlayer();
-            Color red;
-            ColorUtility.TryParseHtmlString("#FF2828", out red);
-            background.color = red;
-            typeText.text = q.type;
-            contentText.text = nameList[currentName] + ": " + ReplaceContent(q);
-            skipText.text = "No tengo huevos\n" + q.price;
-        }
-        else if (q.type == "Verdad")
-        {
-            if (skipPlayer) NextPlayer();
-            background.color = Color.green;
-            typeText.text = q.type;
-            contentText.text = nameList[currentName] + ": " + ReplaceContent(q);
-            skipText.text = "No tengo huevos\n" + q.price;
-        }
-        else if (q.type == "Qué prefieres?")
-        {
-            background.color = Color.yellow;
-            typeText.text = q.type;
-            contentText.text = ReplaceContent(q);
-            skipText.enabled = false;
-        }
-        else if (q.type == "BASO")
-        {
-            if (skipPlayer) NextPlayer();
-            background.color = Color.black;
-            ChangeTextToColor("#FFFFFF"); //whtie
-            typeText.text = q.type;
-            contentText.text = nameList[currentName] + ": " + ReplaceContent(q);
-            skipText.enabled = false;
-            questionList.Remove(q);
-        }
-        else
-        {
-            Debug.LogError("Something went wrong, non existant question type");
-        }
-
+    public void Repeat()
+    {
+        GenerateCard();
     }
     #endregion
 
