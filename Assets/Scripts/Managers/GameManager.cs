@@ -11,12 +11,21 @@ public class GameManager : MonoBehaviour
     #region Attributes
     //Constants
     const string baso = "BASO";
+
     const string namePlaceholder = "@p";
     const string name2Placeholder = "@p2";
     const string pricePlaceholder = "@%";
 
+    const float minBasoTurnPercentage = .35f; //Percentatge of the minimum turn where the baso card can appear
+    const float basoSoftPittyPercentage = .75f; //Percentatge of turns to calculate baso soft pitty
+    const float basoHardPittyPercentage = .90f; //Percentatge of turns to calculate baso hard pitty
+
+    private const float minBasoChance = 0.02f; //Chance of getting a baso chance before soft pitty
+    private const float maxBasoChance = 1f; //Chance of getting a baso chance after hard pitty
+
     [Header("Debug")]
     [SerializeField] private bool debugEnabled = true;
+    [SerializeField] private bool debugLogsEnabled = true;
     [SerializeField] private List<string> debugNames;
 
     [Header("References")]
@@ -25,7 +34,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text contentText;
     [SerializeField] private Text skipText;
     [SerializeField] private Text nextText;
-
     [SerializeField] private InputField nameInputText;
     [SerializeField] private Text nameListText;
     [SerializeField] private GameObject playButton;
@@ -40,14 +48,21 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameMode casualGameMode;
     [SerializeField] private GameMode spicyGameMode;
 
+    [Header("Decks")]
+    [SerializeField] private Deck basoDeck;
+
     //Private attributes
     private List<string> nameList = new List<string>();
     private List<Card> cards = new List<Card>();
 
     private int currentName = -1;
     private Card currentCard = null;
-    private int currentTurn = 1;
-#endregion
+    private int currentTurn = 0;
+
+    private int minBasoTurn;
+    private int basoSoftPitty;
+    private int basoHardPitty;
+    #endregion
 
     #region Initialization
     private void Awake()
@@ -59,7 +74,7 @@ public class GameManager : MonoBehaviour
     {
 
 #if UNITY_EDITOR
-        if (debugEnabled) DebugInitialize();
+        if (debugLogsEnabled) DebugInitialize();
 #endif
 
         AddCards();
@@ -68,6 +83,14 @@ public class GameManager : MonoBehaviour
         game.SetActive(false);
         if (nameList.Count < 2) playButton.SetActive(false);
         nameListText.text = "Jugadores";
+        InitializeBasoCard();
+    }
+
+    private void InitializeBasoCard()
+    {
+        minBasoTurn = (int)(cards.Count * minBasoTurnPercentage);
+        basoSoftPitty = (int)(cards.Count * basoSoftPittyPercentage);
+        basoHardPitty = (int)(cards.Count * basoHardPittyPercentage);
     }
 
     private void DebugInitialize()
@@ -81,9 +104,9 @@ public class GameManager : MonoBehaviour
     void AddCards()
     {
         //Check game mode
-        cards.AddRange(testingGameMode.cards);
+        //cards.AddRange(testingGameMode.cards);
         //cards.AddRange(casualGameMode.cards);
-        //cards.AddRange(spicyGameMode.cards);
+        cards.AddRange(spicyGameMode.cards);
     }
 
 #if !UNITY_EDITOR
@@ -139,14 +162,17 @@ public class GameManager : MonoBehaviour
 
         Next();
 #if UNITY_EDITOR
-        if (debugEnabled) DebugLists();
+        if (debugEnabled) DebugLogs();
 
     }
 
-    private void DebugLists()
+    private void DebugLogs()
     {
         Debug.Log("Name List: " + nameList.Count);
-        Debug.Log("Question List: " + spicyGameMode.cards.Count);
+        Debug.Log("Question List: " + cards.Count);
+        Debug.Log("Min Baso Turn: " + minBasoTurn);
+        Debug.Log("Baso Soft Pitty: " + basoSoftPitty);
+        Debug.Log("Baso Hard Pitty: " + basoHardPitty);
     }
 #endif
     #endregion
@@ -164,6 +190,11 @@ public class GameManager : MonoBehaviour
         return c;
     }
 
+    private Card GetRandomBasoCard()
+    {
+        return basoDeck.cards[UnityEngine.Random.Range(0, basoDeck.cards.Count)];
+    }
+
     private string GetRandomName(List<string> excludedNames)
     {
         List<string> filteredNameList = new List<string>(nameList);
@@ -175,6 +206,44 @@ public class GameManager : MonoBehaviour
         }
 
         return filteredNameList[UnityEngine.Random.Range(0, filteredNameList.Count)];
+    }
+
+    public bool TryGetBasoCard()
+    {
+        float currentChance = CalculateBasoChance();
+
+#if UNITY_EDITOR
+        if (debugLogsEnabled)
+        {
+            Debug.Log($"Current Turn: {currentTurn} | Current Pitty Chance: {currentChance}");
+        }
+#endif
+
+        System.Random random = new System.Random();
+        bool isSuccess = random.NextDouble() < currentChance;
+
+        return isSuccess;
+    }
+
+    private float CalculateBasoChance()
+    {
+        if (currentTurn < minBasoTurn)
+        {
+            return 0;
+        }
+        else if (currentTurn < basoSoftPitty)
+        {
+            return minBasoChance;
+        }
+        else if (currentTurn >= basoHardPitty)
+        {
+            return maxBasoChance;
+        }
+        else
+        {
+            float slope = (maxBasoChance - minBasoChance) / (basoHardPitty - basoSoftPitty);
+            return minBasoChance + slope * (currentTurn - basoSoftPitty);
+        }
     }
 
     private void NextPlayer()
@@ -251,7 +320,7 @@ public class GameManager : MonoBehaviour
         cards.Clear();
         currentName = -1;
         currentCard = null;
-        currentTurn = 1;
+        currentTurn = 0;
 
         InitializeGame();
     }
@@ -274,20 +343,21 @@ public class GameManager : MonoBehaviour
 
     public void Next() 
     {
+        currentTurn++;
+
         if (currentCard?.type?.name == baso)
         {
-            EndGame(); //TODO: Implement end game menu
+            EndGame(); //TODO: Implement end game menu (Return to main menu / play again)
             return;
         }
 
         NextPlayer();
-        PrepareCard(GetRandomCard());
-        currentTurn++;
+        PrepareCard(TryGetBasoCard() ? GetRandomBasoCard() : GetRandomCard());
     }
 
     public void Repeat()
     {
-        PrepareCard(GetRandomSingleTargetCard());
+        PrepareCard(TryGetBasoCard() ? GetRandomBasoCard() : GetRandomSingleTargetCard());
     }
     #endregion
 }
