@@ -158,12 +158,17 @@ public class GameManager : MonoBehaviour
         return c;
     }
 
-    private string GetRandomName()
+    private string GetRandomName(List<string> excludedNames)
     {
-        string name = nameList[UnityEngine.Random.Range(0, nameList.Count)];
-        if (name == nameList[currentName]) return GetRandomName();
+        List<string> filteredNameList = new List<string>(nameList);
 
-        return name;
+        foreach (string name in excludedNames)
+        {
+            if (filteredNameList.Contains(name))
+                filteredNameList.Remove(name);
+        }
+
+        return filteredNameList[UnityEngine.Random.Range(0, filteredNameList.Count)];
     }
 
     private void NextPlayer()
@@ -171,12 +176,30 @@ public class GameManager : MonoBehaviour
         currentName = (currentName == nameList.Count - 1) ? 0 : currentName + 1;
     }
 
-    private string ReplaceContent(string content)
+    private string ReplaceContent(string content, bool excludeCurrentPlayer)
     {
-        string newContent = content;
-        if (content.Contains(namePlaceholder)) newContent = content.Replace(namePlaceholder, GetRandomName());
+        List<string> excludedNames = new List<string>();
+        string name;
 
-        return newContent;
+        if (excludeCurrentPlayer)
+            excludedNames.Add(nameList[currentName]);
+
+        if (content.Contains(name2Placeholder))
+        {
+            //Replace @p2
+            name = GetRandomName(excludedNames);
+            excludedNames.Add(name);
+            content = content.Replace(name2Placeholder, name);
+        }
+
+        if (content.Contains(namePlaceholder))
+        {
+            //Replace @p
+            name = GetRandomName(excludedNames);
+            content = content.Replace(namePlaceholder, name);
+        }
+
+        return content;
     }
 
     private string ReplacePriceText(string content, int number)
@@ -213,7 +236,7 @@ public class GameManager : MonoBehaviour
     {
         string content = "";
         if (c.type.singleTarget) content = $"{nameList[currentName]}: ";
-        return $"{content}{ReplaceContent(c.content)}";
+        return $"{content}{ReplaceContent(c.content, c.type.singleTarget)}";
     }
 
     //Buttons

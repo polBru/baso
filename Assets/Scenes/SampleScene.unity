@@ -1846,14 +1846,6 @@ MonoBehaviour:
   debugNames:
   - Mir
   - Pol
-  - Manel
-  - Dani
-  - Garcia
-  - Sokaina
-  - Nohaila
-  - Laura
-  - Laia
-  - Miri
   background: {fileID: 1513036739}
   typeText: {fileID: 165075034}
   contentText: {fileID: 450064868}
