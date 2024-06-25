@@ -8,11 +8,12 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    #region Attributes
     //Constants
+    const string baso = "BASO";
     const string namePlaceholder = "@p";
     const string name2Placeholder = "@p2";
     const string pricePlaceholder = "@%";
-    const string baso = "BASO";
 
     [Header("Debug")]
     [SerializeField] private bool debugEnabled = true;
@@ -45,15 +46,10 @@ public class GameManager : MonoBehaviour
 
     private int currentName = -1;
     private Card currentCard = null;
+    private int currentTurn = 1;
+#endregion
 
-    private void DebugInitialize()
-    {
-        foreach (string s in debugNames)
-        {
-            nameList.Add(s);
-        }
-    }
-
+    #region Initialization
     private void Awake()
     {
         InitializeGame();
@@ -74,6 +70,22 @@ public class GameManager : MonoBehaviour
         nameListText.text = "Jugadores";
     }
 
+    private void DebugInitialize()
+    {
+        foreach (string s in debugNames)
+        {
+            nameList.Add(s);
+        }
+    }
+
+    void AddCards()
+    {
+        //Check game mode
+        cards.AddRange(testingGameMode.cards);
+        //cards.AddRange(casualGameMode.cards);
+        //cards.AddRange(spicyGameMode.cards);
+    }
+
 #if !UNITY_EDITOR
     void Update()
     {
@@ -89,14 +101,7 @@ public class GameManager : MonoBehaviour
         });
     }
 #endif
-
-    void AddCards()
-    {
-        //Check game mode
-        cards.AddRange(testingGameMode.cards);
-        //cards.AddRange(casualGameMode.cards);
-        //cards.AddRange(spicyGameMode.cards);
-    }
+    #endregion
 
     #region MainMenu
     public void AddPlayer()
@@ -246,6 +251,7 @@ public class GameManager : MonoBehaviour
         cards.Clear();
         currentName = -1;
         currentCard = null;
+        currentTurn = 1;
 
         InitializeGame();
     }
@@ -276,6 +282,7 @@ public class GameManager : MonoBehaviour
 
         NextPlayer();
         PrepareCard(GetRandomCard());
+        currentTurn++;
     }
 
     public void Repeat()
@@ -283,5 +290,4 @@ public class GameManager : MonoBehaviour
         PrepareCard(GetRandomSingleTargetCard());
     }
     #endregion
-
 }
