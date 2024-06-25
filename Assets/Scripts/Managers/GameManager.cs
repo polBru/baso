@@ -34,7 +34,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject introductionMenu;
     [SerializeField] private GameObject game;
 
-    [Header("Decks")]
+    [Header("Game Modes")]
+    [SerializeField] private GameMode testingGameMode; //For debugging
     [SerializeField] private GameMode casualGameMode;
     [SerializeField] private GameMode spicyGameMode;
 
@@ -89,8 +90,9 @@ public class GameManager : MonoBehaviour
     void AddCards()
     {
         //Check game mode
+        cards.AddRange(testingGameMode.cards);
         //cards.AddRange(casualGameMode.cards);
-        cards.AddRange(spicyGameMode.cards);
+        //cards.AddRange(spicyGameMode.cards);
     }
 
     #region MainMenu

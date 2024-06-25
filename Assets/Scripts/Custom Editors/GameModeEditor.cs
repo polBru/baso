@@ -24,14 +24,22 @@ public class GameModeEditor : Editor
             }
         }
     }
+
     public override void OnInspectorGUI()
     {
+        if (script.cards == null)
+            script.cards = new List<Card>();
+
+        if (script.decks == null)
+            script.decks = new List<Deck>();
+
         serializedObject.Update();
         script.cards.Clear();
         for (int i = 0; i < sp.Count; i++)
         {
             EditorGUILayout.PropertyField(sp[i]);
         }
+
         foreach (Deck deck in script.decks)
         {
             if (deck != null)
