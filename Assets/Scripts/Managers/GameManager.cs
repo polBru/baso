@@ -8,9 +8,11 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    //Constants
     const string namePlaceholder = "@p";
     const string name2Placeholder = "@p2";
     const string pricePlaceholder = "@%";
+    const string baso = "BASO";
 
     [Header("Debug")]
     [SerializeField] private bool debugEnabled = true;
@@ -27,8 +29,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text nameListText;
     [SerializeField] private GameObject playButton;
 
-    private int currentName = -1;
-
     [Header("Menus")]
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject introductionMenu;
@@ -39,10 +39,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameMode casualGameMode;
     [SerializeField] private GameMode spicyGameMode;
 
+    //Private attributes
+    private List<string> nameList = new List<string>();
     private List<Card> cards = new List<Card>();
 
-    [Header("Lists")]
-    private List<string> nameList = new List<string>();
+    private int currentName = -1;
+    private Card currentCard = null;
 
     private void DebugInitialize()
     {
@@ -52,7 +54,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Awake()
+    private void Awake()
+    {
+        InitializeGame();
+    }
+
+    private void InitializeGame()
     {
 
 #if UNITY_EDITOR
@@ -60,10 +67,6 @@ public class GameManager : MonoBehaviour
 #endif
 
         AddCards();
-    }
-
-    void Start()
-    {
         mainMenu.SetActive(true);
         introductionMenu.SetActive(false);
         game.SetActive(false);
@@ -141,11 +144,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("Question List: " + spicyGameMode.cards.Count);
     }
 #endif
-
     #endregion
 
     #region Game
-
     private Card GetRandomCard()
     {
         return cards[UnityEngine.Random.Range(0, cards.Count)];
@@ -239,19 +240,40 @@ public class GameManager : MonoBehaviour
         return $"{content}{ReplaceContent(c.content, c.type.singleTarget)}";
     }
 
-    //Buttons
+    private void EndGame()
+    {
+        nameList.Clear();
+        cards.Clear();
+        currentName = -1;
+        currentCard = null;
+
+        InitializeGame();
+    }
+    #endregion
+
+    #region Buttons
     private void PrepareCard(Card c)
     {
+        currentCard = c;
         ChangeTextToColor(c.type.color == Color.black ? "#FFFFFF" : "#323232");
         skipText.enabled = c.type.hasPrice;
         background.color = c.type.color;
         typeText.text = c.type.name;
         contentText.text = GetContentText(c);
         skipText.text = "No tengo huevos\n" + ReplacePriceText(GetEnumDescription(c.price.type), c.price.number);
+
+        if (!c.type.singleTarget)
+            cards.Remove(c);
     }
 
     public void Next() 
     {
+        if (currentCard?.type?.name == baso)
+        {
+            EndGame(); //TODO: Implement end game menu
+            return;
+        }
+
         NextPlayer();
         PrepareCard(GetRandomCard());
     }
