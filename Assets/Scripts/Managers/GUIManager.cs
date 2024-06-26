@@ -11,8 +11,13 @@ public class GUIManager : MonoBehaviour
     private const string lightTextColor = "#FFFFFF";
     private const string darkTextColor = "#323232";
 
+    //Baso Constants
     private const string normalNextText = "Siguiente";
-    private const string basoNextText = "Volver al menú";
+    private const string basoExitText = "Volver al menú";
+    private const string basoRestartText = "Volver a jugar";
+
+    private const int skipButtonFontSize = 60;
+    private const int basoRestartFontSize = 75;
 
     [Header("References")]
     [SerializeField] private Image background;
@@ -49,6 +54,9 @@ public class GUIManager : MonoBehaviour
         mainMenu.SetActive(false);
         introductionMenu.SetActive(true);
         game.SetActive(false);
+
+        nextText.text = normalNextText;
+        skipText.fontSize = skipButtonFontSize;
     }
 
     public void StartGameUI()
@@ -96,11 +104,12 @@ public class GUIManager : MonoBehaviour
         typeText.text = c.type.name;
         this.contentText.text = contentText;
         this.skipText.text = skipText;
-        UpdateNextText(c.type.name == baso); //Canviar això en un futur i fer que la carta de baso sigui un menú de end game??
-    }
 
-    private void UpdateNextText(bool isBasoCard)
-    {
-        nextText.text = isBasoCard ? basoNextText : normalNextText;
+        if (c.type.name == baso)
+        {
+            this.nextText.text = basoExitText;
+            this.skipText.text = basoRestartText;
+            this.skipText.fontSize = basoRestartFontSize;
+        }
     }
 }
