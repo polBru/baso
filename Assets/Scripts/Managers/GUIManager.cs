@@ -37,6 +37,7 @@ public class GUIManager : MonoBehaviour
     {
         this.nameList = nameList;
         mainMenu.SetActive(true);
+        gameChoiceMenu.SetActive(false);
         introductionMenu.SetActive(false);
         game.SetActive(false);
         if (nameList.Count < 2) playButton.SetActive(false);
