@@ -29,19 +29,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<string> debugNames;
 
     [Header("References")]
-    [SerializeField] private Image background;
-    [SerializeField] private Text typeText;
-    [SerializeField] private Text contentText;
-    [SerializeField] private Text skipText;
-    [SerializeField] private Text nextText;
-    [SerializeField] private InputField nameInputText;
-    [SerializeField] private Text nameListText;
-    [SerializeField] private GameObject playButton;
-
-    [Header("Menus")]
-    [SerializeField] private GameObject mainMenu;
-    [SerializeField] private GameObject introductionMenu;
-    [SerializeField] private GameObject game;
+    [SerializeField] GUIManager guiManager;
 
     [Header("Game Modes")]
     [SerializeField] private GameMode testingGameMode; //For debugging
@@ -74,15 +62,11 @@ public class GameManager : MonoBehaviour
     {
 
 #if UNITY_EDITOR
-        if (debugLogsEnabled) DebugInitialize();
+        if (debugEnabled) DebugInitialize();
 #endif
 
         AddCards();
-        mainMenu.SetActive(true);
-        introductionMenu.SetActive(false);
-        game.SetActive(false);
-        if (nameList.Count < 2) playButton.SetActive(false);
-        nameListText.text = "Jugadores";
+        guiManager.InitializeMainMenu(nameList);
         InitializeBasoCard();
     }
 
@@ -126,57 +110,6 @@ public class GameManager : MonoBehaviour
 #endif
     #endregion
 
-    #region MainMenu
-    public void AddPlayer()
-    {
-        if (nameInputText.text == "") return;
-        nameListText.text = "Jugadores: ";
-        nameList.Add(nameInputText.text);
-
-        for (int i = 0; i < nameList.Count - 1; i++)
-        {
-            nameListText.text += nameList[i] + ", ";
-        }
-        nameListText.text += nameList[nameList.Count - 1] + ".";
-
-        nameInputText.text = "";
-        if (nameList.Count >= 2) playButton.SetActive(true);
-    }
-
-    public void Play()
-    {
-        if (nameList.Count < 2) return;
-
-        mainMenu.SetActive(false);
-        introductionMenu.SetActive(true);
-        game.SetActive(false);
-    }
-    #endregion
-
-    #region IntroductionMenu
-    public void StartGame()
-    {
-        mainMenu.SetActive(false);
-        introductionMenu.SetActive(false);
-        game.SetActive(true);
-
-        Next();
-#if UNITY_EDITOR
-        if (debugEnabled) DebugLogs();
-
-    }
-
-    private void DebugLogs()
-    {
-        Debug.Log("Name List: " + nameList.Count);
-        Debug.Log("Question List: " + cards.Count);
-        Debug.Log("Min Baso Turn: " + minBasoTurn);
-        Debug.Log("Baso Soft Pitty: " + basoSoftPitty);
-        Debug.Log("Baso Hard Pitty: " + basoHardPitty);
-    }
-#endif
-    #endregion
-
     #region Game
     private Card GetRandomCard()
     {
@@ -208,7 +141,7 @@ public class GameManager : MonoBehaviour
         return filteredNameList[UnityEngine.Random.Range(0, filteredNameList.Count)];
     }
 
-    public bool TryGetBasoCard()
+    private bool TryGetBasoCard()
     {
         float currentChance = CalculateBasoChance();
 
@@ -251,6 +184,26 @@ public class GameManager : MonoBehaviour
         currentName = (currentName == nameList.Count - 1) ? 0 : currentName + 1;
     }
 
+    private void EndGame()
+    {
+        nameList.Clear();
+        cards.Clear();
+        currentName = -1;
+        currentCard = null;
+        currentTurn = 0;
+
+        InitializeGame();
+    }
+    #endregion
+
+    #region StringManagement
+    private string GetContentText(Card c)
+    {
+        string content = "";
+        if (c.type.singleTarget) content = $"{nameList[currentName]}: ";
+        return $"{content}{ReplaceContent(c.content, c.type.singleTarget)}";
+    }
+
     private string ReplaceContent(string content, bool excludeCurrentPlayer)
     {
         List<string> excludedNames = new List<string>();
@@ -282,18 +235,7 @@ public class GameManager : MonoBehaviour
         return content.Replace(pricePlaceholder, number.ToString());
     }
 
-    private void ChangeTextToColor(string hexadeximal)
-    {
-        Color color;
-        ColorUtility.TryParseHtmlString(hexadeximal, out color);
-
-        typeText.color = color;
-        contentText.color = color;
-        nextText.color = color;
-        skipText.color = color;
-    }
-
-    public string GetEnumDescription(Enum value)
+    private string GetEnumDescription(Enum value)
     {
         FieldInfo fi = value.GetType().GetField(value.ToString());
 
@@ -306,36 +248,48 @@ public class GameManager : MonoBehaviour
 
         return value.ToString();
     }
-
-    private string GetContentText(Card c)
-    {
-        string content = "";
-        if (c.type.singleTarget) content = $"{nameList[currentName]}: ";
-        return $"{content}{ReplaceContent(c.content, c.type.singleTarget)}";
-    }
-
-    private void EndGame()
-    {
-        nameList.Clear();
-        cards.Clear();
-        currentName = -1;
-        currentCard = null;
-        currentTurn = 0;
-
-        InitializeGame();
-    }
     #endregion
 
     #region Buttons
+    public void StartGame()
+    {
+        guiManager.StartGameUI();
+        Next();
+
+#if UNITY_EDITOR
+        if (debugLogsEnabled) DebugLogs();
+
+    }
+
+    private void DebugLogs()
+    {
+        Debug.Log("Name List: " + nameList.Count);
+        Debug.Log("Question List: " + cards.Count);
+        Debug.Log("Min Baso Turn: " + minBasoTurn);
+        Debug.Log("Baso Soft Pitty: " + basoSoftPitty);
+        Debug.Log("Baso Hard Pitty: " + basoHardPitty);
+    }
+#endif
+
+    public void Play()
+    {
+        guiManager.Play();
+    }
+
+    public void AddPlayer()
+    {
+        string name = guiManager.GetNameInputText();
+        if (name == "") return;
+        nameList.Add(name);
+        guiManager.UpdatePlayerList();
+    }
+
     private void PrepareCard(Card c)
     {
         currentCard = c;
-        ChangeTextToColor(c.type.color == Color.black ? "#FFFFFF" : "#323232");
-        skipText.enabled = c.type.hasPrice;
-        background.color = c.type.color;
-        typeText.text = c.type.name;
-        contentText.text = GetContentText(c);
-        skipText.text = "No tengo huevos\n" + ReplacePriceText(GetEnumDescription(c.price.type), c.price.number);
+        string content = GetContentText(c);
+        string skip = "No tengo huevos\n" + ReplacePriceText(GetEnumDescription(c.price.type), c.price.number);
+        guiManager.PrepareCardUI(c, content, skip);
 
         if (!c.type.singleTarget)
             cards.Remove(c);
