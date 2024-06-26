@@ -6,8 +6,13 @@ using UnityEngine.UI;
 public class GUIManager : MonoBehaviour
 {
     //Constants
+    private const string baso = "BASO";
+
     private const string lightTextColor = "#FFFFFF";
     private const string darkTextColor = "#323232";
+
+    private const string normalNextText = "Siguiente";
+    private const string basoNextText = "Volver al menú";
 
     [Header("References")]
     [SerializeField] private Image background;
@@ -91,5 +96,11 @@ public class GUIManager : MonoBehaviour
         typeText.text = c.type.name;
         this.contentText.text = contentText;
         this.skipText.text = skipText;
+        UpdateNextText(c.type.name == baso); //Canviar això en un futur i fer que la carta de baso sigui un menú de end game??
+    }
+
+    private void UpdateNextText(bool isBasoCard)
+    {
+        nextText.text = isBasoCard ? basoNextText : normalNextText;
     }
 }

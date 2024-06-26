@@ -9,15 +9,15 @@ public class GameManager : MonoBehaviour
 {
     #region Attributes
     //Constants
-    const string baso = "BASO";
+    private const string baso = "BASO";
 
-    const string namePlaceholder = "@p";
-    const string name2Placeholder = "@p2";
-    const string pricePlaceholder = "@%";
+    private const string namePlaceholder = "@p";
+    private const string name2Placeholder = "@p2";
+    private const string pricePlaceholder = "@%";
 
-    const float minBasoTurnPercentage = .35f; //Percentatge of the minimum turn where the baso card can appear
-    const float basoSoftPittyPercentage = .75f; //Percentatge of turns to calculate baso soft pitty
-    const float basoHardPittyPercentage = .90f; //Percentatge of turns to calculate baso hard pitty
+    private const float minBasoTurnPercentage = .35f; //Percentatge of the minimum turn where the baso card can appear
+    private const float basoSoftPittyPercentage = .75f; //Percentatge of turns to calculate baso soft pitty
+    private const float basoHardPittyPercentage = .90f; //Percentatge of turns to calculate baso hard pitty
 
     private const float minBasoChance = 0.02f; //Chance of getting a baso chance before soft pitty
     private const float maxBasoChance = 1f; //Chance of getting a baso chance after hard pitty
@@ -85,9 +85,9 @@ public class GameManager : MonoBehaviour
     void AddCards()
     {
         //Check game mode
-        //cards.AddRange(testingGameMode.cards);
+        cards.AddRange(testingGameMode.cards);
         //cards.AddRange(casualGameMode.cards);
-        cards.AddRange(spicyGameMode.cards);
+        //cards.AddRange(spicyGameMode.cards);
     }
 
 #if !UNITY_EDITOR
@@ -300,7 +300,7 @@ public class GameManager : MonoBehaviour
 
         if (currentCard?.type?.name == baso)
         {
-            EndGame(); //TODO: Implement end game menu (Return to main menu / play again)
+            EndGame();
             return;
         }
 
