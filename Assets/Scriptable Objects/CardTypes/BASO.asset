@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: BASO
   color: {r: 0, g: 0, b: 0, a: 1}
-  hasPrice: 0
+  hasPrice: 1
   singleTarget: 1
