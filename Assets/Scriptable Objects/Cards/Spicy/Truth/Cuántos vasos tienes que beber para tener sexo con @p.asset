@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "Cu\xE1ntos vasos tienes que beber para tener sexo con @p"
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: e82668801d4050449822cd7716c38276, type: 2}
-  content: "Cu\xE1ntos vasos tienes que beber para tener sexo con @p"
+  content: "Cu\xE1ntos vasos tienes que beber para tener sexo con @p?"
   price:
     type: 0
     number: 4

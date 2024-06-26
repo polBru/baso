@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Haz un reto elegido por el grupo.
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: a19042183f0e84348b585892e78b929f, type: 2}
-  content: Haz un reto elegido por el grupo.
+  content: Haz un reto elegido por el grupo
   price:
     type: 0
     number: 3

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Alguna vez has tenido cibersexo
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: e82668801d4050449822cd7716c38276, type: 2}
-  content: Alguna vez has tenido cibersexo
+  content: Alguna vez has tenido cibersexo?
   price:
     type: 0
     number: 5

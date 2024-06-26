@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "Que es lo que m\xE1s te pone de @p."
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: e82668801d4050449822cd7716c38276, type: 2}
-  content: "Que es lo que m\xE1s te pone de @p."
+  content: "Que es lo que m\xE1s te pone de @p?"
   price:
     type: 0
     number: 5
