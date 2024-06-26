@@ -175,13 +175,25 @@ public class GameManager : MonoBehaviour
 
     private void EndGame()
     {
-        nameList.Clear();
         cards.Clear();
         currentName = -1;
         currentCard = null;
         currentTurn = 0;
 
+        nameList.Clear();
         InitializeMenu();
+    }
+
+    private void RestartGame()
+    {
+        cards.Clear();
+        currentName = -1;
+        currentCard = null;
+        currentTurn = 0;
+
+        Play();
+        currentName = 0;
+        PrepareCard(GetRandomCard());
     }
     #endregion
 
@@ -310,6 +322,12 @@ public class GameManager : MonoBehaviour
 
     public void Repeat()
     {
+        if (currentCard?.type?.name == baso)
+        {
+            RestartGame();
+            return;
+        }
+
         PrepareCard(TryGetBasoCard() ? GetRandomBasoCard() : GetRandomSingleTargetCard());
     }
     #endregion
