@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed8ce4e3b86a2d49872581c4a3ce40c, type: 3}
+  m_Name: "El m\xE1s propenso en terminar en prisi\xF3n bebe"
+  m_EditorClassIdentifier: 
+  type: {fileID: 11400000, guid: e7a7adae6647a8449b7c99848be2c692, type: 2}
+  content: "El m\xE1s propenso en terminar en prisi\xF3n bebe"
+  price:
+    type: 0
+    number: 0
