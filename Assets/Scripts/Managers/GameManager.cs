@@ -8,36 +8,36 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    #region Attributes
     //Constants
+    const string baso = "BASO";
+
     const string namePlaceholder = "@p";
     const string name2Placeholder = "@p2";
     const string pricePlaceholder = "@%";
-    const string baso = "BASO";
+
+    const float minBasoTurnPercentage = .35f; //Percentatge of the minimum turn where the baso card can appear
+    const float basoSoftPittyPercentage = .75f; //Percentatge of turns to calculate baso soft pitty
+    const float basoHardPittyPercentage = .90f; //Percentatge of turns to calculate baso hard pitty
+
+    private const float minBasoChance = 0.02f; //Chance of getting a baso chance before soft pitty
+    private const float maxBasoChance = 1f; //Chance of getting a baso chance after hard pitty
 
     [Header("Debug")]
     [SerializeField] private bool debugEnabled = true;
+    [SerializeField] private bool debugLogsEnabled = true;
     [SerializeField] private List<string> debugNames;
 
     [Header("References")]
-    [SerializeField] private Image background;
-    [SerializeField] private Text typeText;
-    [SerializeField] private Text contentText;
-    [SerializeField] private Text skipText;
-    [SerializeField] private Text nextText;
-
-    [SerializeField] private InputField nameInputText;
-    [SerializeField] private Text nameListText;
-    [SerializeField] private GameObject playButton;
-
-    [Header("Menus")]
-    [SerializeField] private GameObject mainMenu;
-    [SerializeField] private GameObject introductionMenu;
-    [SerializeField] private GameObject game;
+    [SerializeField] GUIManager guiManager;
 
     [Header("Game Modes")]
     [SerializeField] private GameMode testingGameMode; //For debugging
     [SerializeField] private GameMode casualGameMode;
     [SerializeField] private GameMode spicyGameMode;
+
+    [Header("Decks")]
+    [SerializeField] private Deck basoDeck;
 
     //Private attributes
     private List<string> nameList = new List<string>();
@@ -45,15 +45,14 @@ public class GameManager : MonoBehaviour
 
     private int currentName = -1;
     private Card currentCard = null;
+    private int currentTurn = 0;
 
-    private void DebugInitialize()
-    {
-        foreach (string s in debugNames)
-        {
-            nameList.Add(s);
-        }
-    }
+    private int minBasoTurn;
+    private int basoSoftPitty;
+    private int basoHardPitty;
+    #endregion
 
+    #region Initialization
     private void Awake()
     {
         InitializeGame();
@@ -67,11 +66,31 @@ public class GameManager : MonoBehaviour
 #endif
 
         AddCards();
-        mainMenu.SetActive(true);
-        introductionMenu.SetActive(false);
-        game.SetActive(false);
-        if (nameList.Count < 2) playButton.SetActive(false);
-        nameListText.text = "Jugadores";
+        guiManager.InitializeMainMenu(nameList);
+        InitializeBasoCard();
+    }
+
+    private void InitializeBasoCard()
+    {
+        minBasoTurn = (int)(cards.Count * minBasoTurnPercentage);
+        basoSoftPitty = (int)(cards.Count * basoSoftPittyPercentage);
+        basoHardPitty = (int)(cards.Count * basoHardPittyPercentage);
+    }
+
+    private void DebugInitialize()
+    {
+        foreach (string s in debugNames)
+        {
+            nameList.Add(s);
+        }
+    }
+
+    void AddCards()
+    {
+        //Check game mode
+        //cards.AddRange(testingGameMode.cards);
+        //cards.AddRange(casualGameMode.cards);
+        cards.AddRange(spicyGameMode.cards);
     }
 
 #if !UNITY_EDITOR
@@ -89,61 +108,6 @@ public class GameManager : MonoBehaviour
         });
     }
 #endif
-
-    void AddCards()
-    {
-        //Check game mode
-        cards.AddRange(testingGameMode.cards);
-        //cards.AddRange(casualGameMode.cards);
-        //cards.AddRange(spicyGameMode.cards);
-    }
-
-    #region MainMenu
-    public void AddPlayer()
-    {
-        if (nameInputText.text == "") return;
-        nameListText.text = "Jugadores: ";
-        nameList.Add(nameInputText.text);
-
-        for (int i = 0; i < nameList.Count - 1; i++)
-        {
-            nameListText.text += nameList[i] + ", ";
-        }
-        nameListText.text += nameList[nameList.Count - 1] + ".";
-
-        nameInputText.text = "";
-        if (nameList.Count >= 2) playButton.SetActive(true);
-    }
-
-    public void Play()
-    {
-        if (nameList.Count < 2) return;
-
-        mainMenu.SetActive(false);
-        introductionMenu.SetActive(true);
-        game.SetActive(false);
-    }
-    #endregion
-
-    #region IntroductionMenu
-    public void StartGame()
-    {
-        mainMenu.SetActive(false);
-        introductionMenu.SetActive(false);
-        game.SetActive(true);
-
-        Next();
-#if UNITY_EDITOR
-        if (debugEnabled) DebugLists();
-
-    }
-
-    private void DebugLists()
-    {
-        Debug.Log("Name List: " + nameList.Count);
-        Debug.Log("Question List: " + spicyGameMode.cards.Count);
-    }
-#endif
     #endregion
 
     #region Game
@@ -159,6 +123,11 @@ public class GameManager : MonoBehaviour
         return c;
     }
 
+    private Card GetRandomBasoCard()
+    {
+        return basoDeck.cards[UnityEngine.Random.Range(0, basoDeck.cards.Count)];
+    }
+
     private string GetRandomName(List<string> excludedNames)
     {
         List<string> filteredNameList = new List<string>(nameList);
@@ -172,9 +141,67 @@ public class GameManager : MonoBehaviour
         return filteredNameList[UnityEngine.Random.Range(0, filteredNameList.Count)];
     }
 
+    private bool TryGetBasoCard()
+    {
+        float currentChance = CalculateBasoChance();
+
+#if UNITY_EDITOR
+        if (debugLogsEnabled)
+        {
+            Debug.Log($"Current Turn: {currentTurn} | Current Pitty Chance: {currentChance}");
+        }
+#endif
+
+        System.Random random = new System.Random();
+        bool isSuccess = random.NextDouble() < currentChance;
+
+        return isSuccess;
+    }
+
+    private float CalculateBasoChance()
+    {
+        if (currentTurn < minBasoTurn)
+        {
+            return 0;
+        }
+        else if (currentTurn < basoSoftPitty)
+        {
+            return minBasoChance;
+        }
+        else if (currentTurn >= basoHardPitty)
+        {
+            return maxBasoChance;
+        }
+        else
+        {
+            float slope = (maxBasoChance - minBasoChance) / (basoHardPitty - basoSoftPitty);
+            return minBasoChance + slope * (currentTurn - basoSoftPitty);
+        }
+    }
+
     private void NextPlayer()
     {
         currentName = (currentName == nameList.Count - 1) ? 0 : currentName + 1;
+    }
+
+    private void EndGame()
+    {
+        nameList.Clear();
+        cards.Clear();
+        currentName = -1;
+        currentCard = null;
+        currentTurn = 0;
+
+        InitializeGame();
+    }
+    #endregion
+
+    #region StringManagement
+    private string GetContentText(Card c)
+    {
+        string content = "";
+        if (c.type.singleTarget) content = $"{nameList[currentName]}: ";
+        return $"{content}{ReplaceContent(c.content, c.type.singleTarget)}";
     }
 
     private string ReplaceContent(string content, bool excludeCurrentPlayer)
@@ -208,18 +235,7 @@ public class GameManager : MonoBehaviour
         return content.Replace(pricePlaceholder, number.ToString());
     }
 
-    private void ChangeTextToColor(string hexadeximal)
-    {
-        Color color;
-        ColorUtility.TryParseHtmlString(hexadeximal, out color);
-
-        typeText.color = color;
-        contentText.color = color;
-        nextText.color = color;
-        skipText.color = color;
-    }
-
-    public string GetEnumDescription(Enum value)
+    private string GetEnumDescription(Enum value)
     {
         FieldInfo fi = value.GetType().GetField(value.ToString());
 
@@ -232,35 +248,48 @@ public class GameManager : MonoBehaviour
 
         return value.ToString();
     }
-
-    private string GetContentText(Card c)
-    {
-        string content = "";
-        if (c.type.singleTarget) content = $"{nameList[currentName]}: ";
-        return $"{content}{ReplaceContent(c.content, c.type.singleTarget)}";
-    }
-
-    private void EndGame()
-    {
-        nameList.Clear();
-        cards.Clear();
-        currentName = -1;
-        currentCard = null;
-
-        InitializeGame();
-    }
     #endregion
 
     #region Buttons
+    public void StartGame()
+    {
+        guiManager.StartGameUI();
+        Next();
+
+#if UNITY_EDITOR
+        if (debugLogsEnabled) DebugLogs();
+
+    }
+
+    private void DebugLogs()
+    {
+        Debug.Log("Name List: " + nameList.Count);
+        Debug.Log("Question List: " + cards.Count);
+        Debug.Log("Min Baso Turn: " + minBasoTurn);
+        Debug.Log("Baso Soft Pitty: " + basoSoftPitty);
+        Debug.Log("Baso Hard Pitty: " + basoHardPitty);
+    }
+#endif
+
+    public void Play()
+    {
+        guiManager.Play();
+    }
+
+    public void AddPlayer()
+    {
+        string name = guiManager.GetNameInputText();
+        if (name == "") return;
+        nameList.Add(name);
+        guiManager.UpdatePlayerList();
+    }
+
     private void PrepareCard(Card c)
     {
         currentCard = c;
-        ChangeTextToColor(c.type.color == Color.black ? "#FFFFFF" : "#323232");
-        skipText.enabled = c.type.hasPrice;
-        background.color = c.type.color;
-        typeText.text = c.type.name;
-        contentText.text = GetContentText(c);
-        skipText.text = "No tengo huevos\n" + ReplacePriceText(GetEnumDescription(c.price.type), c.price.number);
+        string content = GetContentText(c);
+        string skip = "No tengo huevos\n" + ReplacePriceText(GetEnumDescription(c.price.type), c.price.number);
+        guiManager.PrepareCardUI(c, content, skip);
 
         if (!c.type.singleTarget)
             cards.Remove(c);
@@ -268,20 +297,21 @@ public class GameManager : MonoBehaviour
 
     public void Next() 
     {
+        currentTurn++;
+
         if (currentCard?.type?.name == baso)
         {
-            EndGame(); //TODO: Implement end game menu
+            EndGame(); //TODO: Implement end game menu (Return to main menu / play again)
             return;
         }
 
         NextPlayer();
-        PrepareCard(GetRandomCard());
+        PrepareCard(TryGetBasoCard() ? GetRandomBasoCard() : GetRandomCard());
     }
 
     public void Repeat()
     {
-        PrepareCard(GetRandomSingleTargetCard());
+        PrepareCard(TryGetBasoCard() ? GetRandomBasoCard() : GetRandomSingleTargetCard());
     }
     #endregion
-
 }

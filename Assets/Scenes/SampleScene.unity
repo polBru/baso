@@ -217,7 +217,7 @@ RectTransform:
   - {fileID: 352420460}
   - {fileID: 313218316}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -446,7 +446,62 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &204135524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 204135526}
+  - component: {fileID: 204135525}
+  m_Layer: 0
+  m_Name: GUIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &204135525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204135524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdb9a96771cae0f499198d1e4d5cf9b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 1108603932}
+  background: {fileID: 1513036739}
+  typeText: {fileID: 165075034}
+  contentText: {fileID: 450064868}
+  skipText: {fileID: 1838043496}
+  nextText: {fileID: 619159497}
+  nameInputText: {fileID: 1239464809}
+  nameListText: {fileID: 508071618}
+  playButton: {fileID: 611633022}
+  mainMenu: {fileID: 1964795636}
+  introductionMenu: {fileID: 352420459}
+  game: {fileID: 313218315}
+--- !u!4 &204135526
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204135524}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 621.6447, y: 329.0449, z: -258.9232}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &277415996
 GameObject:
@@ -845,7 +900,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &474244704
 GameObject:
@@ -1843,23 +1898,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugEnabled: 1
+  debugLogsEnabled: 1
   debugNames:
   - Mir
   - Pol
-  background: {fileID: 1513036739}
-  typeText: {fileID: 165075034}
-  contentText: {fileID: 450064868}
-  skipText: {fileID: 1838043496}
-  nextText: {fileID: 619159497}
-  nameInputText: {fileID: 1239464809}
-  nameListText: {fileID: 508071618}
-  playButton: {fileID: 611633022}
-  mainMenu: {fileID: 1964795636}
-  introductionMenu: {fileID: 352420459}
-  game: {fileID: 313218315}
+  guiManager: {fileID: 204135525}
   testingGameMode: {fileID: 11400000, guid: daada59c0b9e4534099e28560fe29bd8, type: 2}
   casualGameMode: {fileID: 11400000, guid: 07ac772bd7dc2b1499ddbbf72781ce80, type: 2}
   spicyGameMode: {fileID: 11400000, guid: e2f6843c704bb0d43aafd3dce48d5164, type: 2}
+  basoDeck: {fileID: 11400000, guid: 8587dc5dff0925947ac4812e7538f322, type: 2}
 --- !u!4 &1108603933
 Transform:
   m_ObjectHideFlags: 0

@@ -13,13 +13,11 @@ MonoBehaviour:
   m_Name: Hoy se folla
   m_EditorClassIdentifier: 
   decks:
-  - {fileID: 11400000, guid: 8587dc5dff0925947ac4812e7538f322, type: 2}
   - {fileID: 11400000, guid: 414f98e668def0f428da58d45828513d, type: 2}
   - {fileID: 11400000, guid: 4abd1e266eef1a74198e2644749d91b6, type: 2}
   - {fileID: 11400000, guid: a4387f505ca79bc43bad32648786b902, type: 2}
   - {fileID: 11400000, guid: 63e5aa87df28b1f49ae13f030de62066, type: 2}
   cards:
-  - {fileID: 11400000, guid: bc59e04626abed14c80244b38d6f29d2, type: 2}
   - {fileID: 11400000, guid: ba4c884d358480b4c90be3799489e749, type: 2}
   - {fileID: 11400000, guid: 93ad8a365667bb94781f53b2a7a3c00f, type: 2}
   - {fileID: 11400000, guid: a20e7a0c0d7aad64c8cad308c1c7a87d, type: 2}
