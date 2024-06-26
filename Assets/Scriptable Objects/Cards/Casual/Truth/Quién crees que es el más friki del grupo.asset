@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ed8ce4e3b86a2d49872581c4a3ce40c, type: 3}
-  m_Name: "Crees que eres m\xE1s guap@ que @p"
+  m_Name: "Qui\xE9n crees que es el m\xE1s friki del grupo"
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: e82668801d4050449822cd7716c38276, type: 2}
-  content: "Crees que eres m\xE1s guap@ que @p?"
+  content: "Qui\xE9n crees que es el m\xE1s friki del grupo?"
   price:
     type: 0
-    number: 5
+    number: 2

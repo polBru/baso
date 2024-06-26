@@ -51,7 +51,7 @@ public class CardEditor : Editor {
                 EditorGUILayout.PropertyField(sp[i]);
             }
         }
-        content.stringValue = script.name; //Update card content to match its name
+        //content.stringValue = script.name; //Update card content to match its name
         serializedObject.ApplyModifiedProperties();
     }
 }
