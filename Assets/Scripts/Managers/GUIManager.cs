@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,7 +37,7 @@ public class GUIManager : MonoBehaviour
         nameListText.text = "Jugadores: ";
     }
 
-    public void Play()
+    public void InitializeGame()
     {
         if (nameList.Count < 2) return;
 

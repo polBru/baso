@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -53,28 +52,26 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Initialization
-    private void Awake()
+    private void Start()
     {
-        InitializeGame();
+        InitializeMenu();
+    }
+
+    private void InitializeMenu()
+    {
+#if UNITY_EDITOR
+        if (debugEnabled) DebugInitialize();
+#endif
+        guiManager.InitializeMainMenu(nameList);
     }
 
     private void InitializeGame()
     {
-
-#if UNITY_EDITOR
-        if (debugEnabled) DebugInitialize();
-#endif
-
         AddCards();
-        guiManager.InitializeMainMenu(nameList);
-        InitializeBasoCard();
-    }
-
-    private void InitializeBasoCard()
-    {
         minBasoTurn = (int)(cards.Count * minBasoTurnPercentage);
         basoSoftPitty = (int)(cards.Count * basoSoftPittyPercentage);
         basoHardPitty = (int)(cards.Count * basoHardPittyPercentage);
+        guiManager.InitializeGame();
     }
 
     private void DebugInitialize()
@@ -192,7 +189,7 @@ public class GameManager : MonoBehaviour
         currentCard = null;
         currentTurn = 0;
 
-        InitializeGame();
+        InitializeMenu();
     }
     #endregion
 
@@ -258,9 +255,11 @@ public class GameManager : MonoBehaviour
 
 #if UNITY_EDITOR
         if (debugLogsEnabled) DebugLogs();
+#endif
 
     }
 
+#if UNITY_EDITOR
     private void DebugLogs()
     {
         Debug.Log("Name List: " + nameList.Count);
@@ -273,7 +272,7 @@ public class GameManager : MonoBehaviour
 
     public void Play()
     {
-        guiManager.Play();
+        InitializeGame();
     }
 
     public void AddPlayer()
