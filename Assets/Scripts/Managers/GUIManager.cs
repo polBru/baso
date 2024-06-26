@@ -26,6 +26,7 @@ public class GUIManager : MonoBehaviour
 
     [Header("Menus")]
     [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject gameChoiceMenu;
     [SerializeField] private GameObject introductionMenu;
     [SerializeField] private GameObject game;
 

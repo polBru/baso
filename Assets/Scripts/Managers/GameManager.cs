@@ -150,9 +150,7 @@ public class GameManager : MonoBehaviour
 #endif
 
         System.Random random = new System.Random();
-        bool isSuccess = random.NextDouble() < currentChance;
-
-        return isSuccess;
+        return random.NextDouble() < currentChance;
     }
 
     private float CalculateBasoChance()
@@ -229,7 +227,10 @@ public class GameManager : MonoBehaviour
 
     private string ReplacePriceText(string content, int number)
     {
-        return content.Replace(pricePlaceholder, number.ToString());
+        string numString = number == 0 ? "?" : number.ToString();
+        string newText = content.Replace(pricePlaceholder, numString);
+        if (number == 1) newText = newText.Remove(newText.Length-1);
+        return newText;
     }
 
     private string GetEnumDescription(Enum value)
