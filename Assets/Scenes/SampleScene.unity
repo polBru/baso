@@ -293,7 +293,7 @@ RectTransform:
   - {fileID: 352420460}
   - {fileID: 313218316}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -597,7 +597,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &204135524
 GameObject:
@@ -628,6 +628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb9a96771cae0f499198d1e4d5cf9b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugManager: {fileID: 1108547253}
   background: {fileID: 1513036739}
   typeText: {fileID: 165075034}
   contentText: {fileID: 450064868}
@@ -640,6 +641,7 @@ MonoBehaviour:
   gameChoiceMenu: {fileID: 293196343}
   introductionMenu: {fileID: 352420459}
   game: {fileID: 313218315}
+  buttonEnableTime: 0.5
 --- !u!4 &204135526
 Transform:
   m_ObjectHideFlags: 0
@@ -652,7 +654,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &277415996
 GameObject:
@@ -1343,11 +1345,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1108603932}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 1
+        m_MethodName: PlayWithGameMode
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: e2f6843c704bb0d43aafd3dce48d5164, type: 2}
+          m_ObjectArgumentAssemblyTypeName: GameMode, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1498,7 +1500,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &474244704
 GameObject:
@@ -2642,11 +2644,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1108603932}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 1
+        m_MethodName: PlayWithGameMode
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: daada59c0b9e4534099e28560fe29bd8, type: 2}
+          m_ObjectArgumentAssemblyTypeName: GameMode, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2844,6 +2846,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083493132}
   m_CullTransparentMesh: 0
+--- !u!1 &1108547252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1108547254}
+  - component: {fileID: 1108547253}
+  m_Layer: 0
+  m_Name: DebugManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1108547253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108547252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdd4dda423a2bca489236e2ad6e7fec1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugGameMode: {fileID: 11400000, guid: daada59c0b9e4534099e28560fe29bd8, type: 2}
+  debugEnabled: 1
+  debugGameModeEnabled: 1
+  debugLogsEnabled: 1
+  debugNames:
+  - Mir
+  - Pol
+--- !u!4 &1108547254
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108547252}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 371.00238, y: 251.14044, z: -264.9826}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1108603931
 GameObject:
   m_ObjectHideFlags: 0
@@ -2873,11 +2925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b09482f755cac14bae5427bf974bf19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugEnabled: 1
-  debugLogsEnabled: 1
-  debugNames:
-  - Mir
-  - Pol
+  debugManager: {fileID: 1108547253}
   guiManager: {fileID: 204135525}
   basoDeck: {fileID: 11400000, guid: 8587dc5dff0925947ac4812e7538f322, type: 2}
 --- !u!4 &1108603933

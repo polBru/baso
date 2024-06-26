@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +21,7 @@ public class GUIManager : MonoBehaviour
     private const int basoRestartFontSize = 75;
 
     [Header("References")]
+    [SerializeField] private DebugManager debugManager;
     [SerializeField] private Image background;
     [SerializeField] private Text typeText;
     [SerializeField] private Text contentText;
@@ -34,6 +36,9 @@ public class GUIManager : MonoBehaviour
     [SerializeField] private GameObject gameChoiceMenu;
     [SerializeField] private GameObject introductionMenu;
     [SerializeField] private GameObject game;
+
+    [Header("Animations")]
+    [SerializeField] private float buttonEnableTime = .5f;
 
     //Private attributes
     private List<string> nameList;
@@ -113,5 +118,22 @@ public class GUIManager : MonoBehaviour
             this.skipText.text = basoRestartText;
             this.skipText.fontSize = basoRestartFontSize;
         }
+
+#if UNITY_EDITOR
+        if (debugManager.debugEnabled)
+            return;
+#endif
+
+        //Spawn animation
+        this.nextText.gameObject.SetActive(false);
+        this.skipText.gameObject.SetActive(false);
+        StartCoroutine(EnableButtonsWithDelay());
+    }
+
+    private IEnumerator EnableButtonsWithDelay()
+    {
+        yield return new WaitForSeconds(buttonEnableTime);
+        this.nextText.gameObject.SetActive(true);
+        this.skipText.gameObject.SetActive(true);
     }
 }

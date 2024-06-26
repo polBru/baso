@@ -22,12 +22,8 @@ public class GameManager : MonoBehaviour
     private const float minBasoChance = 0.02f; //Chance of getting a baso chance before soft pitty
     private const float maxBasoChance = 1f; //Chance of getting a baso chance after hard pitty
 
-    [Header("Debug")]
-    [SerializeField] private bool debugEnabled = true;
-    [SerializeField] private bool debugLogsEnabled = true;
-    [SerializeField] private List<string> debugNames;
-
     [Header("References")]
+    [SerializeField] DebugManager debugManager; 
     [SerializeField] GUIManager guiManager;
 
     [Header("Decks")]
@@ -39,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     private int currentName = -1;
     private Card currentCard = null;
+    private GameMode currentGameMode = null;
     private int currentTurn = 0;
 
     private int minBasoTurn;
@@ -49,19 +46,26 @@ public class GameManager : MonoBehaviour
     #region Initialization
     private void Start()
     {
+
+#if !UNITY_EDITOR
+        debugEnabled = false;
+        debugLogsEnabled = false;
+#endif
+
         InitializeMenu();
     }
 
     private void InitializeMenu()
     {
 #if UNITY_EDITOR
-        if (debugEnabled) DebugInitialize();
+        if (debugManager.debugEnabled) DebugInitialize();
 #endif
         guiManager.InitializeMainMenu(nameList);
     }
 
     private void InitializeGame()
     {
+        AddCards();
         minBasoTurn = (int)(cards.Count * minBasoTurnPercentage);
         basoSoftPitty = (int)(cards.Count * basoSoftPittyPercentage);
         basoHardPitty = (int)(cards.Count * basoHardPittyPercentage);
@@ -70,18 +74,15 @@ public class GameManager : MonoBehaviour
 
     private void DebugInitialize()
     {
-        foreach (string s in debugNames)
+        foreach (string s in debugManager.debugNames)
         {
             nameList.Add(s);
         }
     }
 
-    void AddCards(GameMode gameMode)
+    private void AddCards()
     {
-        //Check game mode
-        cards.AddRange(gameMode.cards);
-        //cards.AddRange(casualGameMode.cards);
-        //cards.AddRange(spicyGameMode.cards);
+        cards.AddRange(currentGameMode.cards);
     }
 
 #if !UNITY_EDITOR
@@ -137,7 +138,7 @@ public class GameManager : MonoBehaviour
         float currentChance = CalculateBasoChance();
 
 #if UNITY_EDITOR
-        if (debugLogsEnabled)
+        if (debugManager.debugLogsEnabled)
         {
             Debug.Log($"Current Turn: {currentTurn} | Current Pitty Chance: {currentChance}");
         }
@@ -191,7 +192,7 @@ public class GameManager : MonoBehaviour
         currentCard = null;
         currentTurn = 0;
 
-        Play();
+        InitializeGame();
         currentName = 0;
         PrepareCard(GetRandomCard());
     }
@@ -261,7 +262,7 @@ public class GameManager : MonoBehaviour
         Next();
 
 #if UNITY_EDITOR
-        if (debugLogsEnabled) DebugLogs();
+        if (debugManager.debugLogsEnabled) DebugLogs();
 #endif
 
     }
@@ -277,14 +278,16 @@ public class GameManager : MonoBehaviour
     }
 #endif
 
-    public void Play()
-    {
-        InitializeGame();
-    }
-
     public void PlayWithGameMode(GameMode gameMode)
     {
-        AddCards(gameMode);
+        currentGameMode = gameMode;
+
+#if UNITY_EDITOR
+        if (debugManager.debugGameModeEnabled)
+            currentGameMode = debugManager.debugGameMode;
+#endif
+
+        InitializeGame();
     }
 
     public void AddPlayer()
