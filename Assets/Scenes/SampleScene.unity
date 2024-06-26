@@ -1028,11 +1028,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1108603932}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 1
+        m_MethodName: PlayWithGameMode
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 07ac772bd7dc2b1499ddbbf72781ce80, type: 2}
+          m_ObjectArgumentAssemblyTypeName: GameMode, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2760,7 +2760,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Casual
+  m_Text: "Ma\xF1ana trabajo"
 --- !u!222 &1069043328
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2879,9 +2879,6 @@ MonoBehaviour:
   - Mir
   - Pol
   guiManager: {fileID: 204135525}
-  testingGameMode: {fileID: 11400000, guid: daada59c0b9e4534099e28560fe29bd8, type: 2}
-  casualGameMode: {fileID: 11400000, guid: 07ac772bd7dc2b1499ddbbf72781ce80, type: 2}
-  spicyGameMode: {fileID: 11400000, guid: e2f6843c704bb0d43aafd3dce48d5164, type: 2}
   basoDeck: {fileID: 11400000, guid: 8587dc5dff0925947ac4812e7538f322, type: 2}
 --- !u!4 &1108603933
 Transform:
@@ -3288,7 +3285,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -0.29644775}
+  m_AnchoredPosition: {x: 0, y: -0.29638672}
   m_SizeDelta: {x: 1920.0005, y: 976.2296}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1387379150

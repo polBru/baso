@@ -30,11 +30,6 @@ public class GameManager : MonoBehaviour
     [Header("References")]
     [SerializeField] GUIManager guiManager;
 
-    [Header("Game Modes")]
-    [SerializeField] private GameMode testingGameMode; //For debugging
-    [SerializeField] private GameMode casualGameMode;
-    [SerializeField] private GameMode spicyGameMode;
-
     [Header("Decks")]
     [SerializeField] private Deck basoDeck;
 
@@ -67,7 +62,6 @@ public class GameManager : MonoBehaviour
 
     private void InitializeGame()
     {
-        AddCards();
         minBasoTurn = (int)(cards.Count * minBasoTurnPercentage);
         basoSoftPitty = (int)(cards.Count * basoSoftPittyPercentage);
         basoHardPitty = (int)(cards.Count * basoHardPittyPercentage);
@@ -82,10 +76,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void AddCards()
+    void AddCards(GameMode gameMode)
     {
         //Check game mode
-        cards.AddRange(testingGameMode.cards);
+        cards.AddRange(gameMode.cards);
         //cards.AddRange(casualGameMode.cards);
         //cards.AddRange(spicyGameMode.cards);
     }
@@ -274,6 +268,11 @@ public class GameManager : MonoBehaviour
     public void Play()
     {
         InitializeGame();
+    }
+
+    public void PlayWithGameMode(GameMode gameMode)
+    {
+        AddCards(gameMode);
     }
 
     public void AddPlayer()
