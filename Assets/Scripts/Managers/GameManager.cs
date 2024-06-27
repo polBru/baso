@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     private const string pricePlaceholder = "@%";
 
     private const float minBasoTurnPercentage = .35f; //Percentatge of the minimum turn where the baso card can appear
-    private const float basoSoftPittyPercentage = .75f; //Percentatge of turns to calculate baso soft pitty
+    private const float basoSoftPittyPercentage = .70f; //Percentatge of turns to calculate baso soft pitty
     private const float basoHardPittyPercentage = .90f; //Percentatge of turns to calculate baso hard pitty
 
     private const float minBasoChance = 0.02f; //Chance of getting a baso chance before soft pitty

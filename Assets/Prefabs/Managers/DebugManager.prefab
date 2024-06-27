@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugGameMode: {fileID: 11400000, guid: daada59c0b9e4534099e28560fe29bd8, type: 2}
   debugEnabled: 1
-  debugGameModeEnabled: 1
+  debugGameModeEnabled: 0
   debugLogsEnabled: 1
   debugNames:
   - Mir
