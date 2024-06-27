@@ -35,6 +35,8 @@ public class GUIManager : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject gameChoiceMenu;
     [SerializeField] private GameObject introductionMenu;
+    [SerializeField] private GameObject customizeMenu;
+    [SerializeField] private GameObject customizeDeckMenu;
     [SerializeField] private GameObject game;
 
     [Header("Animations")]
@@ -49,6 +51,8 @@ public class GUIManager : MonoBehaviour
         mainMenu.SetActive(true);
         gameChoiceMenu.SetActive(false);
         introductionMenu.SetActive(false);
+        customizeMenu.SetActive(false);
+        customizeDeckMenu.SetActive(false);
         game.SetActive(false);
         if (nameList.Count < 2) playButton.SetActive(false);
         nameListText.text = "Jugadores: ";
