@@ -18,4 +18,4 @@ MonoBehaviour:
     te sale un 6, reparte-los en lugar de beber"
   price:
     type: 0
-    number: 5
+    number: 3

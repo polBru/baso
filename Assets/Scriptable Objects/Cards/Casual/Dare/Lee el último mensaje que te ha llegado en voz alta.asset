@@ -16,4 +16,4 @@ MonoBehaviour:
   content: "Lee el \xFAltimo mensaje que te ha llegado en voz alta"
   price:
     type: 0
-    number: 4
+    number: 3

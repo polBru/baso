@@ -14,8 +14,8 @@ MonoBehaviour:
     comer o beber"
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: a19042183f0e84348b585892e78b929f, type: 2}
-  content: "\xBFCuanto te f\xEDas de @p Cierra los ojos y deja que @p te de algo
+  content: "\xBFCuanto te f\xEDas de @p? Cierra los ojos y deja que @p te de algo
     de comer o beber"
   price:
     type: 0
-    number: 4
+    number: 3

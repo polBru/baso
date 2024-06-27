@@ -18,4 +18,4 @@ MonoBehaviour:
     adivina que es! Si fallas, bebe un trago.
   price:
     type: 0
-    number: 3
+    number: 2
