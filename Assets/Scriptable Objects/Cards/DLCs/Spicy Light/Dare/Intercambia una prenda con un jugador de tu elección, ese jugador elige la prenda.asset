@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed8ce4e3b86a2d49872581c4a3ce40c, type: 3}
+  m_Name: "Intercambia una prenda con un jugador de tu elecci\xF3n, ese jugador elige
+    la prenda"
+  m_EditorClassIdentifier: 
+  type: {fileID: 11400000, guid: a19042183f0e84348b585892e78b929f, type: 2}
+  content: "Intercambia una prenda con un jugador de tu elecci\xF3n, ese jugador
+    elige la prenda"
+  price:
+    type: 0
+    number: 4
