@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db146d26af39d5b44a6c16008ce253e1, type: 3}
+  m_Name: PicantonDare
+  m_EditorClassIdentifier: 
+  cards:
+  - {fileID: 11400000, guid: a7981cc69b1815a4bb4f099ba198c55a, type: 2}
+  - {fileID: 11400000, guid: 06aaeb7413e277d4e833e425e7463484, type: 2}
+  - {fileID: 11400000, guid: 98ccc0f36461e8544a9151e3ef6d5b5b, type: 2}
+  - {fileID: 11400000, guid: ed54b4ce7cd133642a0428f595f53b2d, type: 2}
+  - {fileID: 11400000, guid: e932f474d1f32bf42bde3520e46df9d3, type: 2}
+  - {fileID: 11400000, guid: 5b73cc1941b746642b48e72cd1cd3cc6, type: 2}
+  - {fileID: 11400000, guid: 03347ef53214db74b940a39b375ef22c, type: 2}

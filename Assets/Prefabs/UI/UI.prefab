@@ -637,7 +637,7 @@ MonoBehaviour:
         m_MethodName: GoToCustomizeDecks
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: e2f6843c704bb0d43aafd3dce48d5164, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 230065fd6b147004690bea8b111976ca, type: 2}
           m_ObjectArgumentAssemblyTypeName: GameMode, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -676,7 +676,7 @@ MonoBehaviour:
         m_MethodName: OnGameModeHold
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: e2f6843c704bb0d43aafd3dce48d5164, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 230065fd6b147004690bea8b111976ca, type: 2}
           m_ObjectArgumentAssemblyTypeName: GameMode, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
