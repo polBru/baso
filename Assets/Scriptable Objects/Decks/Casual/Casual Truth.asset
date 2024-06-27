@@ -12,4 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db146d26af39d5b44a6c16008ce253e1, type: 3}
   m_Name: Casual Truth
   m_EditorClassIdentifier: 
-  cards: []
+  cards:
+  - {fileID: 11400000, guid: b95d94614e25ced449a5e07fe7d55456, type: 2}
+  - {fileID: 11400000, guid: ea1276be95ac68c40a64df928c5b2516, type: 2}
+  - {fileID: 11400000, guid: 12a2754eea834fb4fb9a512f01bc7e81, type: 2}
+  - {fileID: 11400000, guid: 66e3235c4221b7c47816dbc7763aab2c, type: 2}
+  - {fileID: 11400000, guid: f2e1a50f5c1510144adbc0509b7cea2a, type: 2}
+  - {fileID: 11400000, guid: 80449504f1af82f418a9685df6f42416, type: 2}
+  - {fileID: 11400000, guid: 99fa65b0aadb9214da0484a339f92baa, type: 2}
+  - {fileID: 11400000, guid: 5bbabd15dd417f34989e61640f57c6f8, type: 2}
+  - {fileID: 11400000, guid: ac403246a7c6e7840a368dd347e9c73f, type: 2}
+  - {fileID: 11400000, guid: 8c02caf987847594f809633184350be2, type: 2}
+  - {fileID: 11400000, guid: 2f74ac92149b9b14caf89ebf86ecb65e, type: 2}
+  - {fileID: 11400000, guid: b23ea1c0868dbf74a87c73130cdd61e3, type: 2}
+  - {fileID: 11400000, guid: 9e768d057b7e07d44a4e417b1c5d384e, type: 2}
+  - {fileID: 11400000, guid: a1b104ec49b6fe14f86a39e4d1062929, type: 2}
+  - {fileID: 11400000, guid: 1fb443003f7edbc4787a7b467709af15, type: 2}
+  - {fileID: 11400000, guid: 0ea33da18aebaab4888c3f0da704c985, type: 2}
+  - {fileID: 11400000, guid: 38508fa412b2d5348852f33227e2b2a9, type: 2}

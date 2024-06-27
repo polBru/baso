@@ -9,11 +9,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ed8ce4e3b86a2d49872581c4a3ce40c, type: 3}
+  m_Script: {fileID: 11500000, guid: db146d26af39d5b44a6c16008ce253e1, type: 3}
   m_Name: Casual Dare
   m_EditorClassIdentifier: 
-  type: {fileID: 0}
-  content: 
-  price:
-    type: 0
-    number: 0
+  cards:
+  - {fileID: 11400000, guid: 7b9b0f53dcf1f9b4b98d627090fb93f2, type: 2}
+  - {fileID: 11400000, guid: cfe34e4e6cca6844c941890a43d0edeb, type: 2}
+  - {fileID: 11400000, guid: 9fd30758507a01a4980e38c58db2fcc6, type: 2}
+  - {fileID: 11400000, guid: 082b88a83289ae341a45a464d100ed64, type: 2}
+  - {fileID: 11400000, guid: 813d4ce8baa7e824586791a7aadccdad, type: 2}
+  - {fileID: 11400000, guid: 47031d3785c33fc4d9a90dc2b1f4f480, type: 2}
+  - {fileID: 11400000, guid: e0518e7c3f4488040a6b5f08fe4a2bef, type: 2}
+  - {fileID: 11400000, guid: 29aacffbc3d27eb4581a381176211e1f, type: 2}
+  - {fileID: 11400000, guid: 8bc2ba37e0114d446bdb940118e5cca5, type: 2}
+  - {fileID: 11400000, guid: 8c7ff4aec659c2444a26d326c9bf56d9, type: 2}
+  - {fileID: 11400000, guid: 08e51d64393f9d442a47ea5ec6a463aa, type: 2}
+  - {fileID: 11400000, guid: 76c66a0e260ecad49a74f7a765a8dffa, type: 2}
+  - {fileID: 11400000, guid: fcb086fff6ad46b40a65547afbe729ea, type: 2}
+  - {fileID: 11400000, guid: 139261e92d775eb4b836e68b60e117e7, type: 2}
+  - {fileID: 11400000, guid: 8b22ef9b808ac8d43971ecdda4c793c7, type: 2}
+  - {fileID: 11400000, guid: d3a771f0184034c418e98928b44e0a91, type: 2}
+  - {fileID: 11400000, guid: 27d28c9b3d5a1c34ea113c24fcca8eb5, type: 2}
+  - {fileID: 11400000, guid: b35c31e12e871234eaaf97e0d58db782, type: 2}
+  - {fileID: 11400000, guid: 75f50a92ebc9be44dadf8769ef70eb34, type: 2}
+  - {fileID: 11400000, guid: 9efd3a0f11925a34cbe69237c017cd69, type: 2}
+  - {fileID: 11400000, guid: 7d4dcf127ad064e498dc863e11bc9e03, type: 2}
+  - {fileID: 11400000, guid: 4c99906079faa9a438ea1ed5a90beef1, type: 2}
+  - {fileID: 11400000, guid: bd002fb0f4ab4ae4297f9a599474b7df, type: 2}
+  - {fileID: 11400000, guid: 4d4fee75e03cecc468675514839eabf7, type: 2}

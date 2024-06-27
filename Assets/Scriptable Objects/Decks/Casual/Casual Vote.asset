@@ -12,4 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db146d26af39d5b44a6c16008ce253e1, type: 3}
   m_Name: Casual Vote
   m_EditorClassIdentifier: 
-  cards: []
+  cards:
+  - {fileID: 11400000, guid: 05588a74e77993c45b8ab2651b11c3c2, type: 2}
+  - {fileID: 11400000, guid: bb8ec00e33c463a4489af06a28d1fd5d, type: 2}
+  - {fileID: 11400000, guid: 0d0a27d727e327e4c86d3f9042fa1bb3, type: 2}
+  - {fileID: 11400000, guid: 942af99862bb5d54c905e80fde81ea80, type: 2}
+  - {fileID: 11400000, guid: e9a2a1ab4b85c2e4a92756ed3bca6993, type: 2}
+  - {fileID: 11400000, guid: 762c224eb9c9bc344a6e8bdd9393c113, type: 2}
+  - {fileID: 11400000, guid: bfee5ead9ec92a44d9bf36b2e70bc68a, type: 2}
+  - {fileID: 11400000, guid: 1a9f759dc718c0a458287b9d1dd13f15, type: 2}
+  - {fileID: 11400000, guid: 51a489caeacbdb945856051a5021407c, type: 2}
+  - {fileID: 11400000, guid: bb65f270619d60442af3ba52d336d4be, type: 2}
+  - {fileID: 11400000, guid: 6cd22007f2ac1db468d9f4a8a31336a8, type: 2}
+  - {fileID: 11400000, guid: caf9482e81093674ebc67060f889e6dd, type: 2}
+  - {fileID: 11400000, guid: 328aeb1e073d56d48b03c1c245a20296, type: 2}
