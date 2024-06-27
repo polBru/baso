@@ -45,6 +45,24 @@ public class GUIManager : MonoBehaviour
     //Private attributes
     private List<string> nameList;
 
+#if !UNITY_EDITOR
+    public void InitializeMainMenuBuild(List<string> nameList, Action onKeyboardDone)
+    {
+        // On press keyboard enter
+        nameInputText.onEndEdit.AddListener(val =>
+        {
+            // TouchScreenKeyboard.Status.Done: Keyboard disappeared when something like "Done" button in mobilekeyboard
+            // TouchScreenKeyboard.Status.Canceled: Keyboard disappeared when "Back" Hardware Button Pressed in Android
+            // TouchScreenKeyboard.Status.LostFocus: Keyboard disappeared when some area except keyboard and input area
+            if (nameInputText.touchScreenKeyboard.status == TouchScreenKeyboard.Status.Done)
+            {
+                onKeyboardDone();
+            }
+        });
+        InitializeMainMenu(nameList);
+    }
+#endif
+
     public void InitializeMainMenu(List<string> nameList)
     {
         this.nameList = nameList;

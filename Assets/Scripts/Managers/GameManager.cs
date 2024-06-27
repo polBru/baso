@@ -46,12 +46,6 @@ public class GameManager : MonoBehaviour
     #region Initialization
     private void Start()
     {
-
-#if !UNITY_EDITOR
-        debugEnabled = false;
-        debugLogsEnabled = false;
-#endif
-
         InitializeMenu();
     }
 
@@ -59,8 +53,10 @@ public class GameManager : MonoBehaviour
     {
 #if UNITY_EDITOR
         if (debugManager.debugEnabled) DebugInitialize();
-#endif
         guiManager.InitializeMainMenu(nameList);
+#else
+        guiManager.InitializeMainMenuBuild(nameList, AddPlayer);
+#endif
     }
 
     private void InitializeGame()
@@ -84,25 +80,9 @@ public class GameManager : MonoBehaviour
     {
         cards.AddRange(currentGameMode.cards);
     }
+#endregion
 
-#if !UNITY_EDITOR
-    void Update()
-    {
-        nameInputText.onEndEdit.AddListener(val =>
-        {
-            // TouchScreenKeyboard.Status.Done: Keyboard disappeared when something like "Done" button in mobilekeyboard
-            // TouchScreenKeyboard.Status.Canceled: Keyboard disappeared when "Back" Hardware Button Pressed in Android
-            // TouchScreenKeyboard.Status.LostFocus: Keyboard disappeared when some area except keyboard and input area
-            if (nameInputText.touchScreenKeyboard.status == TouchScreenKeyboard.Status.Done)
-            {
-                AddPlayer();
-            }
-        });
-    }
-#endif
-    #endregion
-
-    #region Game
+#region Game
     private Card GetRandomCard()
     {
         return cards[UnityEngine.Random.Range(0, cards.Count)];
@@ -196,9 +176,9 @@ public class GameManager : MonoBehaviour
         currentName = 0;
         PrepareCard(GetRandomCard());
     }
-    #endregion
+#endregion
 
-    #region StringManagement
+#region StringManagement
     private string GetContentText(Card c)
     {
         string content = "";
@@ -253,9 +233,9 @@ public class GameManager : MonoBehaviour
 
         return value.ToString();
     }
-    #endregion
+#endregion
 
-    #region Buttons
+#region Buttons
     public void StartGame()
     {
         guiManager.StartGameUI();
@@ -333,5 +313,5 @@ public class GameManager : MonoBehaviour
 
         PrepareCard(TryGetBasoCard() ? GetRandomBasoCard() : GetRandomSingleTargetCard());
     }
-    #endregion
+#endregion
 }
