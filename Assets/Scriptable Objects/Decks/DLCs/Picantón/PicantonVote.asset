@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PicantonVote
   m_EditorClassIdentifier: 
   cards:
-  - {fileID: 11400000, guid: 0b2d12c83d7c71f48ba0d6bbb04262f7, type: 2}
-  - {fileID: 11400000, guid: 0416f2e4f4fcda94eb677e1d258533b2, type: 2}
-  - {fileID: 11400000, guid: 1a5bba7c5b34c244c96c4c3b1e6adb9a, type: 2}
-  - {fileID: 11400000, guid: c22325c07ca52684e8ca0645f2024971, type: 2}
+  - {fileID: 11400000, guid: 66693430725e2754c814a7116dc76e65, type: 2}
+  - {fileID: 11400000, guid: 8f9a771812f013f4b9011b90b27f08cb, type: 2}
+  - {fileID: 11400000, guid: b60524e646097a14bb0b716611c62aad, type: 2}
+  - {fileID: 11400000, guid: 527da0f889bd4514b94204ee911a75fb, type: 2}
