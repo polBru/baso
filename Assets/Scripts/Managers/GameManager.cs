@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Packages.Rider.Editor.UnitTesting;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
+using System.Security.Cryptography;
 using UnityEngine;
+using static TreeEditor.TreeEditorHelper;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,6 +28,7 @@ public class GameManager : MonoBehaviour
     [Header("References")]
     [SerializeField] DebugManager debugManager; 
     [SerializeField] GUIManager guiManager;
+    [SerializeField] CustomManager customManager;
 
     [Header("Decks")]
     [SerializeField] private Deck basoDeck;
@@ -267,6 +271,15 @@ public class GameManager : MonoBehaviour
             currentGameMode = debugManager.debugGameMode;
 #endif
 
+        InitializeGame();
+    }
+
+    public void PlayWithCustomDecks()
+    {
+        GameMode gameMode = new GameMode();
+        gameMode.decks = new List<Deck>();
+        gameMode.decks.AddRange(customManager.decks);
+        currentGameMode = gameMode;
         InitializeGame();
     }
 
