@@ -274,10 +274,12 @@ public class GameManager : MonoBehaviour
     public void PlayWithCustomDecks()
     {
         GameMode gameMode = new GameMode();
-        gameMode.decks = new List<Deck>();
-        gameMode.decks.AddRange(customManager.decks);
-        currentGameMode = gameMode;
-        InitializeGame();
+        gameMode.cards = new List<Card>();
+        foreach (Deck deck in customManager.decks)
+        {
+            gameMode.cards.AddRange(deck.cards);
+        }
+        PlayWithGameMode(gameMode);
     }
 
     public void AddPlayer()
@@ -323,5 +325,32 @@ public class GameManager : MonoBehaviour
 
         PrepareCard(TryGetBasoCard() ? GetRandomBasoCard() : GetRandomSingleTargetCard());
     }
-#endregion
+
+    public void GoToCustomizeDecks(GameMode gameMode)
+    {
+        customManager.GoToCustomizeDecks(gameMode);
+        CustomPlayEnabled();
+    }
+
+    public void OnGameModeHold(GameObject gameObject)
+    {
+        customManager.OnGameModeHold(gameObject);
+        CustomPlayEnabled();
+    }
+
+    public void OnGameModeHold(GameMode gameMode)
+    {
+        customManager.OnGameModeHold(gameMode);
+        CustomPlayEnabled();
+    }
+
+    public void CustomPlayEnabled()
+    {
+        if (customManager.decks != null)
+        {
+            Debug.Log(customManager.decks.Count);
+            guiManager.CustomPlayEnabled(customManager.decks.Count > 0);
+        }
+    }
+    #endregion
 }

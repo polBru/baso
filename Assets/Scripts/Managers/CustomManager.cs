@@ -32,6 +32,7 @@ public class CustomManager : MonoBehaviour
 
     [HideInInspector] public List<Deck> decks = new List<Deck>();
     private GameMode actualCustomizingGameMode;
+    private GameObject checkObject;
 
     private void Start()
     {
@@ -50,6 +51,11 @@ public class CustomManager : MonoBehaviour
         voteToggle.SetIsOnWithoutNotify(CheckDeck(voteType));
         wyrToggle.SetIsOnWithoutNotify(CheckDeck(wyrType));
         eventToggle.SetIsOnWithoutNotify(CheckDeck(eventType));
+    }
+
+    public void GoToCustomizeDecks(GameObject gameObject)
+    {
+        checkObject = gameObject;
     }
 
     private Deck GetDeck(CardType type)
@@ -78,11 +84,6 @@ public class CustomManager : MonoBehaviour
         return false;
     }
 
-    public void OnGameModeHold(GameObject gameObject)
-    {
-        gameObject.SetActive(!gameObject.activeSelf);
-    }
-
     public void OnGameModeHold(GameMode gameMode)
     {
         actualCustomizingGameMode = gameMode;
@@ -90,23 +91,23 @@ public class CustomManager : MonoBehaviour
         {
             foreach (CardType type in cardTypes)
             {
-                AddOrRemoveDeckByCardTpe(deck, type);
+                AddOrRemoveHold(deck, type);
             }
         }
     }
 
-    private void AddOrRemoveDeckByCardTpe(Deck deck, CardType type)
+    private void AddOrRemoveHold(Deck deck, CardType type)
     {
         foreach (Card card in deck.cards)
         {
             if (card.type == type)
             {
-                if (!CheckDeck(type))
+                if (!CheckDeck(type) && checkObject.activeSelf)
                 {
                     decks.Add(deck);
                     return;
                 }
-                else
+                else if (CheckDeck(type) && !checkObject.activeSelf)
                 {
                     decks.Remove(deck);
                     return;
@@ -115,10 +116,45 @@ public class CustomManager : MonoBehaviour
         }
     }
 
+    private bool AddOrRemoveDeckByCardTpe(Deck deck, CardType type)
+    {
+        foreach (Card card in deck.cards)
+        {
+            if (card.type == type)
+            {
+                if (!CheckDeck(type))
+                {
+                    decks.Add(deck);
+                    return true;
+                }
+                else
+                {
+                    decks.Remove(deck);
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
+
     public void OnDeckClicked(CardType type)
     {
-        Deck deck = GetDeck(type);
-        if (!CheckDeck(type)) decks.Add(deck);
-        else decks.Remove(deck);
+        List<bool> hasDecks = new List<bool>();
+        foreach (Deck deck in actualCustomizingGameMode.decks)
+        {
+            AddOrRemoveDeckByCardTpe(deck, type);
+        }
+        foreach (CardType cardType in cardTypes)
+        {
+            hasDecks.Add(CheckDeck(cardType));
+        }
+
+        checkObject.SetActive(hasDecks.Contains(true));
+    }
+
+    public void OnGameModeHold(GameObject gameObject)
+    {
+        gameObject.SetActive(!gameObject.activeSelf);
+        checkObject = gameObject;
     }
 }

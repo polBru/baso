@@ -45,4 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugManager: {fileID: 0}
   guiManager: {fileID: 0}
+  customManager: {fileID: 0}
   basoDeck: {fileID: 11400000, guid: 8587dc5dff0925947ac4812e7538f322, type: 2}

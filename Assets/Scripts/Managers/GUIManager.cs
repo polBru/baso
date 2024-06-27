@@ -73,6 +73,7 @@ public class GUIManager : MonoBehaviour
         customizeMenu.SetActive(false);
         customizeDeckMenu.SetActive(false);
         game.SetActive(false);
+        playCustomButton.SetActive(false);
         if (nameList.Count < 2) playButton.SetActive(false);
         nameListText.text = "Jugadores: ";
     }
@@ -160,5 +161,10 @@ public class GUIManager : MonoBehaviour
         yield return new WaitForSeconds(buttonEnableTime);
         this.nextText.gameObject.SetActive(true);
         this.skipText.gameObject.SetActive(true);
+    }
+
+    public void CustomPlayEnabled(bool enabled)
+    {
+        playCustomButton.SetActive(enabled);
     }
 }
