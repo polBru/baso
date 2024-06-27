@@ -30,6 +30,7 @@ public class GUIManager : MonoBehaviour
     [SerializeField] private InputField nameInputText;
     [SerializeField] private Text nameListText;
     [SerializeField] private GameObject playButton;
+    [SerializeField] private GameObject playCustomButton;
 
     [Header("Menus")]
     [SerializeField] private GameObject mainMenu;
@@ -64,6 +65,8 @@ public class GUIManager : MonoBehaviour
 
         mainMenu.SetActive(false);
         introductionMenu.SetActive(true);
+        customizeMenu.SetActive(false);
+        customizeDeckMenu.SetActive(false);
         game.SetActive(false);
 
         nextText.text = normalNextText;

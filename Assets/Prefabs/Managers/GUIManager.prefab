@@ -52,8 +52,11 @@ MonoBehaviour:
   nameInputText: {fileID: 0}
   nameListText: {fileID: 0}
   playButton: {fileID: 0}
+  playCustomButton: {fileID: 0}
   mainMenu: {fileID: 0}
   gameChoiceMenu: {fileID: 0}
   introductionMenu: {fileID: 0}
+  customizeMenu: {fileID: 0}
+  customizeDeckMenu: {fileID: 0}
   game: {fileID: 0}
   buttonEnableTime: 0.5

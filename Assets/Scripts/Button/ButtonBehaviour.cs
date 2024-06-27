@@ -47,6 +47,7 @@ public class ButtonBehaviour : MonoBehaviour, IUpdateSelectedHandler, IPointerDo
             {
                 m_OnHold.Invoke();
                 hasPressed = false;
+                isPressed = false;
                 return;
             }
         } else if (hasPressed)
