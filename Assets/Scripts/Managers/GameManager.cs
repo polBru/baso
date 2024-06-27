@@ -347,10 +347,7 @@ public class GameManager : MonoBehaviour
     public void CustomPlayEnabled()
     {
         if (customManager.decks != null)
-        {
-            Debug.Log(customManager.decks.Count);
             guiManager.CustomPlayEnabled(customManager.decks.Count > 0);
-        }
     }
     #endregion
 }
